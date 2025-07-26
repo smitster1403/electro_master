@@ -37,8 +37,8 @@ export default function Home() {
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={200}
-                      height={200}
+                      width={250}
+                      height={250}
                       className="product-image"
                     />
                   </div>
@@ -48,15 +48,33 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-              {/* Duplicate set for seamless loop */}
+              {/* Second set for seamless loop */}
               {allProducts.map((product, index) => (
                 <div key={`second-${index}`} className="product-card">
                   <div className="product-image-container">
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={200}
-                      height={200}
+                      width={250}
+                      height={250}
+                      className="product-image"
+                    />
+                  </div>
+                  <div className="product-info">
+                    <h3 className="product-name">{product.name}</h3>
+                    <p className="product-description">{product.description}</p>
+                  </div>
+                </div>
+              ))}
+              {/* Third set for extra smoothness */}
+              {allProducts.map((product, index) => (
+                <div key={`third-${index}`} className="product-card">
+                  <div className="product-image-container">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={250}
+                      height={250}
                       className="product-image"
                     />
                   </div>
