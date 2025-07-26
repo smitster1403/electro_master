@@ -37,14 +37,6 @@ const NavBar = () => {
                 </li>
                 <li>
                     <Link 
-                        href="/products" 
-                        className={`nav_link ${isActive('/products') ? 'active' : ''}`}
-                    >
-                        Products
-                    </Link>
-                </li>
-                <li>
-                    <Link 
                         href="/about" 
                         className={`nav_link ${isActive('/about') ? 'active' : ''}`}
                     >

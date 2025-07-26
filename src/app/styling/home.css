@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+/* Hero section */
+.hero-section {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+  padding: 80px 0 60px;
+  text-align: center;
+  margin-top: 44px; /* Account for fixed navbar */
+}
+
+.hero-content {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffff00;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: #cccccc;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Products showcase */
+.products-showcase {
+  background: #ffffff;
+  padding: 80px 0;
+  width: 100%;
+}
+
+.product-category {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 2.5%;
+}
+
+.product-category:not(:last-child) {
+  margin-bottom: 80px;
+}
+
+.category-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  align-items: stretch; /* Changed to stretch for equal height cards */
+  justify-content: center; /* Center the grid when items are fewer */
+  width: 100%;
+}
+
+/* Product cards */
+.product-card {
+  background: #ffffff;
+  border: 2px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  height: 100%; /* Take full height of grid cell */
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffff00;
+}
+
+.product-image-container {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  transition: background-color 0.3s ease;
+  height: 220px; /* Fixed height for consistent image containers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card:hover .product-image-container {
+  background: #fffef0;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.product-info {
+  text-align: center;
+  margin-top: auto; /* Push content to bottom of flexbox container */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 80px; /* Minimum height to ensure consistent spacing */
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (min-width: 1400px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  /* Special case for single item - center it */
+  .products-grid:has(.product-card:only-child) {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+  
+  /* Special case for single item - center it */
+  .products-grid:has(.product-card:only-child) {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  /* Special case for single item - center it */
+  .products-grid:has(.product-card:only-child) {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  /* Special case for single item - center it */
+  .products-grid:has(.product-card:only-child) {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0 40px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .products-showcase {
+    padding: 60px 0;
+  }
+  
+  .category-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .product-card {
+    padding: 24px;
+    max-width: 400px;
+  }
+  
+  .product-image-container {
+    height: 200px; /* Smaller on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .category-title {
+    font-size: 1.75rem;
+  }
+  
+  .product-card {
+    padding: 20px;
+    max-width: 100%;
+  }
+  
+  .product-name {
+    font-size: 1.25rem;
+  }
+  
+  .products-grid {
+    gap: 20px;
+  }
+  
+  .product-image-container {
+    height: 180px; /* Even smaller on very small screens */
+  }
+}

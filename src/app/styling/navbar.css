@@ -1,34 +1,40 @@
 @import "tailwindcss";
 
-
 .main_nav{
     background: #000000;
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:flex-start;
+    align-items: center;
     width: 100vw;
+    padding: 10px 20px;
+    min-height: 60px;
+    box-sizing: border-box;
 }
+
 .routes{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    /* padding-inline: 20px; */
-    font-size: xx-large;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2rem;
     color: rgb(255, 255, 255);
-    padding-right: 25px;
-    padding-top: 9px;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
 }
+
 .routes a{
-    font-weight: bolder;
-    padding-inline: 10px;
+    font-weight: 600;
     text-decoration: none;
     color: white;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
+
 .routes a:hover{
     color: rgba(255, 255, 0);
 }
@@ -37,23 +43,101 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-inline: 20px;
     text-decoration: none;
     color: inherit;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: inherit;
 }
+
 .header img{
     margin-right: 10px;
-    padding-block: 10px;
+    min-height: 40px;
+    min-width: 40px;
+    flex-shrink: 0;
 }
 
 .title{
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: bolder;
     color: rgba(255, 255, 0);
-    padding-left: 10px;
+    white-space: nowrap;
 }
 
 .title:hover{
     color: white;
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+    .main_nav {
+        padding: 8px 15px;
+        min-height: 55px;
+    }
+    
+    .routes {
+        font-size: 1rem;
+        gap: 15px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .header img {
+        min-height: 35px;
+        min-width: 35px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    .main_nav {
+        padding: 6px 10px;
+        min-height: 50px;
+    }
+    
+    .routes {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+    
+    .routes a {
+        padding: 5px 8px;
+    }
+    
+    .title {
+        font-size: 1.2rem;
+    }
+    
+    .header img {
+        min-height: 30px;
+        min-width: 30px;
+        margin-right: 8px;
+    }
+}
+
+/* Very small mobile styles */
+@media (max-width: 360px) {
+    .main_nav {
+        padding: 5px 8px;
+        min-height: 45px;
+    }
+    
+    .routes {
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+    
+    .routes a {
+        padding: 4px 6px;
+    }
+    
+    .title {
+        font-size: 1rem;
+    }
+    
+    .header img {
+        min-height: 25px;
+        min-width: 25px;
+        margin-right: 6px;
+    }
 }
