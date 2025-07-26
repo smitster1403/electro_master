@@ -1,6 +1,10 @@
 import React from "react";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Contact - Electro Master",
+    description: "Get in touch with Electro Master for all your welding rod needs"
+};
 
 const Contact = () => {
     return (
@@ -17,8 +21,3 @@ const Contact = () => {
 }
 
 export default Contact;
-
-export const metadata = {
-    title: "Contact - Electro Master",
-    description: "Get in touch with Electro Master for all your welding rod needs"
-};

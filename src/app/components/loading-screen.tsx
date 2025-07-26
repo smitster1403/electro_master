@@ -13,7 +13,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let progressInterval: NodeJS.Timeout;
     let loadingComplete = false;
 
     // Simulate progress during loading
@@ -27,7 +26,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
     };
 
     // Start progress simulation
-    progressInterval = setInterval(updateProgress, 100);
+    const progressInterval = setInterval(updateProgress, 100);
 
     const handleLoad = () => {
       loadingComplete = true;
@@ -42,11 +41,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
     };
 
     // Check if document is already loaded
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      // Wait for all resources to load
-      window.addEventListener('load', handleLoad);
+    if (typeof window !== 'undefined') {
+      if (document.readyState === 'complete') {
+        handleLoad();
+      } else {
+        // Wait for all resources to load
+        window.addEventListener('load', handleLoad);
+      }
     }
 
     // Fallback timeout to prevent infinite loading
@@ -54,11 +55,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
       if (isLoading) {
         handleLoad();
       }
-    }, 8000);
+    }, 5000); // Reduced timeout to 5 seconds
 
     return () => {
       clearInterval(progressInterval);
-      window.removeEventListener('load', handleLoad);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('load', handleLoad);
+      }
       clearTimeout(fallbackTimeout);
     };
   }, [isLoading]);
@@ -76,10 +79,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
             <div className="logo-circle">
               <Image 
                 src="/logo.png" 
-                width={50} 
-                height={50} 
+                width={40} 
+                height={40} 
                 alt="ElectroMaster Logo" 
                 className="logo-image"
+                priority
               />
             </div>
           </div>
