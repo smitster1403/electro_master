@@ -27,7 +27,6 @@ export default function Home() {
 
       <div className="products-showcase">
         <section className="product-carousel">
-          <h2 className="carousel-title">Our Products</h2>
           <div className="conveyor-belt">
             <div className="conveyor-track">
               {/* First set of products */}
