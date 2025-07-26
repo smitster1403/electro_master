@@ -69,7 +69,7 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
+  gap: 20px;
   justify-items: center;
   align-items: stretch; /* Changed to stretch for equal height cards */
   justify-content: center; /* Center the grid when items are fewer */
@@ -79,40 +79,39 @@
 /* Product cards */
 .product-card {
   background: #ffffff;
-  border: 2px solid #f0f0f0;
-  border-radius: 20px;
+  border: none;
+  border-radius: 0;
   padding: 40px;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column; /* Stack children vertically */
   height: 100%; /* Take full height of grid cell */
+  position: relative;
 }
 
 .product-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  border-color: #ffff00;
+  transform: translateY(-8px);
+  background: #fafafa;
 }
 
 .product-image-container {
-  background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-  border-radius: 16px;
-  padding: 12px; /* Reduced padding to give more space for the image */
+  background: transparent;
+  border-radius: 12px;
+  padding: 20px;
   margin-bottom: 30px;
   transition: all 0.3s ease;
   height: 450px; /* Increased height for bigger images */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible; /* Changed to visible so shadow shows */
 }
 
 .product-card:hover .product-image-container {
-  background: linear-gradient(135deg, #fffef0 0%, #fff9cc 100%);
   transform: scale(1.02);
 }
 
@@ -123,14 +122,17 @@
   height: auto;
   object-fit: contain;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   /* Ensure the image takes up as much space as possible while maintaining aspect ratio */
   min-width: 250px;
   min-height: 250px;
+  /* Drop shadow applied directly to the image */
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
 }
 
 .product-card:hover .product-image {
   transform: scale(1.05);
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.18));
 }
 
 .product-info {
@@ -161,7 +163,7 @@
 @media (min-width: 1400px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    gap: 30px;
   }
   
   /* Special case for single item - center it */
@@ -175,7 +177,7 @@
 @media (min-width: 1200px) and (max-width: 1399px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 45px;
+    gap: 25px;
   }
   
   /* Special case for single item - center it */
@@ -189,7 +191,7 @@
 @media (min-width: 900px) and (max-width: 1199px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 20px;
   }
   
   /* Special case for single item - center it */
@@ -203,7 +205,7 @@
 @media (min-width: 768px) and (max-width: 899px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
+    gap: 15px;
   }
   
   /* Special case for single item - center it */
@@ -242,7 +244,7 @@
   
   .products-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   
@@ -277,7 +279,7 @@
   
   .products-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 10px;
   }
   
   .product-card {
