@@ -40,24 +40,19 @@
   margin: 0 auto;
 }
 
-/* Products showcase */
+/* Products showcase - Conveyor Belt */
 .products-showcase {
   background: #ffffff;
   padding: 80px 0;
   width: 100%;
+  overflow: hidden;
 }
 
-.product-category {
-  max-width: 95%;
-  margin: 0 auto;
-  padding: 0 2.5%;
+.product-carousel {
+  width: 100%;
 }
 
-.product-category:not(:last-child) {
-  margin-bottom: 80px;
-}
-
-.category-title {
+.carousel-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: #000000;
@@ -66,49 +61,70 @@
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  align-items: stretch; /* Changed to stretch for equal height cards */
-  justify-content: center; /* Center the grid when items are fewer */
+.conveyor-belt {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  background: #ffffff;
 }
 
-/* Product cards */
+.conveyor-track {
+  display: flex;
+  width: calc(700px * 7 * 2); /* Width for all products doubled */
+  animation: scroll-left 40s linear infinite;
+  gap: 0px;
+  will-change: transform;
+}
+
+/* Keyframe animation for continuous scrolling */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.conveyor-belt:hover .conveyor-track {
+  animation-play-state: paused;
+}
+
+/* Product cards for conveyor */
 .product-card {
   background: #ffffff;
   border: none;
-  border-radius: 0;
-  padding: 40px;
+  border-radius: 12px;
+  padding: 30px;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: none;
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 350px;
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  height: 100%; /* Take full height of grid cell */
+  flex-direction: column;
   position: relative;
+  margin: 0 25px;
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  background: #fafafa;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-image-container {
   background: transparent;
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   transition: all 0.3s ease;
-  height: 450px; /* Increased height for bigger images */
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* Changed to visible so shadow shows */
+  overflow: visible;
 }
 
 .product-card:hover .product-image-container {
@@ -116,17 +132,15 @@
 }
 
 .product-image {
-  max-width: 95%; /* Fit properly within container while still being large */
-  max-height: 95%; /* Fit properly within container while still being large */
+  max-width: 90%;
+  max-height: 90%;
   width: auto;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
   transition: all 0.3s ease;
-  /* Ensure the image takes up as much space as possible while maintaining aspect ratio */
-  min-width: 250px;
-  min-height: 250px;
-  /* Drop shadow applied directly to the image */
+  min-width: 200px;
+  min-height: 200px;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
 }
 
@@ -137,85 +151,29 @@
 
 .product-info {
   text-align: center;
-  margin-top: auto; /* Push content to bottom of flexbox container */
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 80px; /* Minimum height to ensure consistent spacing */
+  min-height: 80px;
 }
 
 .product-name {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #000000;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
 }
 
 .product-description {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666666;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
 }
 
 /* Responsive design */
-@media (min-width: 1400px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-  
-  /* Special case for single item - center it */
-  .products-grid:has(.product-card:only-child) {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-  }
-  
-  /* Special case for single item - center it */
-  .products-grid:has(.product-card:only-child) {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 900px) and (max-width: 1199px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  /* Special case for single item - center it */
-  .products-grid:has(.product-card:only-child) {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 899px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  /* Special case for single item - center it */
-  .products-grid:has(.product-card:only-child) {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-
 @media (max-width: 768px) {
   .hero-section {
     padding: 60px 0 40px;
@@ -237,30 +195,39 @@
     padding: 60px 0;
   }
   
-  .category-title {
+  .carousel-title {
     font-size: 2rem;
     margin-bottom: 30px;
   }
   
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
   .product-card {
-    padding: 30px;
-    max-width: 450px;
+    width: 280px;
+    padding: 25px;
+    margin: 0 15px;
   }
   
   .product-image-container {
-    height: 350px; /* Bigger on mobile but still fits well */
-    padding: 12px; /* Reduced padding for mobile */
+    height: 250px;
+    padding: 15px;
   }
   
   .product-image {
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 160px;
+    min-height: 160px;
+  }
+  
+  .product-name {
+    font-size: 1.2rem;
+  }
+  
+  .product-description {
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust conveyor track width for mobile */
+  .conveyor-track {
+    width: calc(310px * 7 * 2);
+    animation-duration: 35s;
   }
 }
 
@@ -273,31 +240,37 @@
     font-size: 1.125rem;
   }
   
-  .category-title {
+  .carousel-title {
     font-size: 1.75rem;
   }
   
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
   .product-card {
-    padding: 25px;
-    max-width: 100%;
-  }
-  
-  .product-name {
-    font-size: 1.25rem;
+    width: 250px;
+    padding: 20px;
+    margin: 0 10px;
   }
   
   .product-image-container {
-    height: 320px; /* Still bigger on very small screens */
-    padding: 10px; /* Minimal padding for very small screens */
+    height: 220px;
+    padding: 12px;
   }
   
   .product-image {
-    min-width: 180px;
-    min-height: 180px;
+    min-width: 140px;
+    min-height: 140px;
+  }
+  
+  .product-name {
+    font-size: 1.1rem;
+  }
+  
+  .product-description {
+    font-size: 0.85rem;
+  }
+  
+  /* Adjust conveyor track width for very small screens */
+  .conveyor-track {
+    width: calc(270px * 7 * 2);
+    animation-duration: 30s;
   }
 }
