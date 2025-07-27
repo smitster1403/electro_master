@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Electro Master",
+  title: "ElectroMaster",
   description: "Quality Welding Rod Manufacturer"
 };
 

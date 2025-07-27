@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 2.0rem;
     color: rgb(255, 255, 255);
     list-style: none;
     margin: 0;
@@ -58,7 +58,7 @@
 }
 
 .title{
-    font-size: 1.8rem;
+    font-size: 2.0rem;
     font-weight: bolder;
     color: rgba(255, 255, 0);
     white-space: nowrap;

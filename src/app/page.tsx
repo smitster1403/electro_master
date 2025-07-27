@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 import "./styling/home.css";
 
@@ -13,17 +15,29 @@ export default function Home() {
     { name: "MIG Wire", image: "/products/wire/mig_wire.png", description: "High-quality MIG welding wire" },
   ];
 
+  useEffect(() => {
+    // Trigger fade-in effect after component mounts
+    const mainElement = document.querySelector('.main');
+    const heroText = document.querySelector('.hero-text');
+    const productsShowcase = document.querySelector('.products-showcase');
+    
+    if (mainElement) {
+      mainElement.classList.add('fade-in');
+    }
+    
+    if (heroText) {
+      heroText.classList.add('fade-in-hero');
+    }
+    
+    if (productsShowcase) {
+      productsShowcase.classList.add('fade-in-carousel');
+    }
+  }, []);
+
   return (
     <div className="main">
-      <div className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">ElectroMaster</h1>
-          <p className="hero-subtitle">Quality Welding Rod Manufacturer</p>
-          <p className="hero-description">
-            Professional welding solutions for industrial and commercial applications
-          </p>
-        </div>
-      </div>
+      
+      <p className="hero-text">Quality Welding Rod Manufacturer</p>
 
       <div className="products-showcase">
         <section className="product-carousel">
