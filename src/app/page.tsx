@@ -101,6 +101,43 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      <div className="details-section">
+        <div className="company-stats">
+          <div className="stat-item">
+            <div className="stat-icon">
+              <img src="/thumbsup.png" alt="SAIW Certification" />
+            </div>
+            <p className="stat-text">Passed SAIW Tests</p>
+            <p className="stat-label">Quality Assurance Standard</p>
+          </div>
+          
+          
+          <div className="stat-item">
+            <div className="stat-icon">
+              <img src="/production.png" alt="Production Capacity" />
+            </div>
+            <p className="stat-text">6+ Tons/Day</p>
+            <p className="stat-label">Production Capacity</p>
+          </div>
+         
+          <div className="stat-item">
+            <div className="stat-icon">
+              <img src="/certificate.png" alt="BOBS Certification" />
+            </div>
+            <p className="stat-text">BOBS Certification</p>
+            <p className="stat-label">BOS89-2010 certification in process</p>
+          </div>
+          
+          <div className="stat-item">
+            <div className="stat-icon">
+              <img src="/resellers.png" alt="Distribution Network" />
+            </div>
+            <p className="stat-text">15+ Partners</p>
+            <p className="stat-label">Distribution Network</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
