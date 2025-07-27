@@ -117,7 +117,7 @@ export default function Home() {
             <div className="stat-icon">
               <img src="/production.png" alt="Production Capacity" />
             </div>
-            <p className="stat-text">6+ Tons/Day</p>
+            <p className="stat-text">≈6 Tons/Day</p>
             <p className="stat-label">Production Capacity</p>
           </div>
          
