@@ -156,7 +156,7 @@ const About = () => {
                                 </div>
                             </div>
                             <h3>Quality Control</h3>
-                            <p>Every electrode tested to meet our uncompromising standards</p>
+                            <p>Every electrode engineered to meet our uncompromising standards</p>
                         </div>
                     </div>
                 </div>
