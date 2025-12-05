@@ -3,54 +3,51 @@
 import React from "react";
 import "../styling/about.css";
 
-const About = () => {
+const AboutPage = () => {
     return (
-        <div className="about_main">
-            <section className="about_hero">
-                <h1 className="about_title">
-                    The<br />Forge
-                </h1>
-                <p className="about_lead">
-                    ElectroMaster is not just a manufacturer. We are the backbone of industry. 
-                    Forging the tools that build nations, one weld at a time.
-                </p>
-            </section>
-
-            <div className="about_grid">
-                <div className="about_section">
-                    <span className="section_label">OUR MISSION</span>
-                    <p className="section_text">
-                        To deliver welding solutions of uncompromising quality. We believe in the power of 
-                        precision and the strength of materials. Our electrodes are engineered to withstand 
-                        the most demanding environments on Earth.
-                    </p>
-                </div>
-                <div className="about_section">
-                    <span className="section_label">OUR ORIGIN</span>
-                    <p className="section_text">
-                        Born in the heart of Botswana, ElectroMaster rose to meet the demands of a growing 
-                        infrastructure. We combine local expertise with global standards to create products 
-                        that define reliability.
+        <div className="about-page">
+            <div className="about-hero">
+                <div className="container-width">
+                    <h1 className="about-title">OUR MISSION</h1>
+                    <p className="about-lead">
+                        To provide the industrial sector with welding solutions that define reliability, efficiency, and strength. We are building the future of fabrication.
                     </p>
                 </div>
             </div>
 
-            <div className="stats_grid">
-                <div className="stat_box">
-                    <span className="stat_number">25+</span>
-                    <span className="stat_label">YEARS EXPERIENCE</span>
+            <div className="about-content container-width">
+                <div className="about-grid">
+                    <div className="about-text">
+                        <h2>WHO WE ARE</h2>
+                        <p>
+                            Electro Master was founded with a singular vision: to bridge the gap between high-quality manufacturing and on-site industrial needs. We understand that in construction, shipbuilding, and pipeline fabrication, the quality of the weld determines the integrity of the structure.
+                        </p>
+                        <p>
+                            We are not just a supplier; we are partners in your production line. Our team consists of industry veterans who understand the technical nuances of metallurgy and arc physics.
+                        </p>
+                    </div>
+                    <div className="about-image-placeholder">
+                        [INDUSTRIAL FACILITY IMAGE]
+                    </div>
                 </div>
-                <div className="stat_box">
-                    <span className="stat_number">1M+</span>
-                    <span className="stat_label">RODS PRODUCED</span>
-                </div>
-                <div className="stat_box">
-                    <span className="stat_number">100%</span>
-                    <span className="stat_label">QUALITY GUARANTEE</span>
+
+                <div className="stats-row">
+                    <div className="stat-item">
+                        <span className="stat-number">500+</span>
+                        <span className="stat-label">Active Clients</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-number">99.9%</span>
+                        <span className="stat-label">Delivery Accuracy</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-number">24/7</span>
+                        <span className="stat-label">Technical Support</span>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default About;
+export default AboutPage;

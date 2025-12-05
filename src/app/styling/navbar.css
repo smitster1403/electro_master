@@ -1,80 +1,101 @@
-@import "tailwindcss";
-
-/* Cinematic Industrial Navbar */
-.main_nav {
+.nav-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 80px;
+    background-color: var(--primary);
+    color: white;
+    z-index: 1000;
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 
-.header {
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     text-decoration: none;
 }
 
-.title {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    text-transform: uppercase;
+.nav-logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1;
 }
 
-.routes {
+.nav-logo-text span {
+    color: var(--accent);
+}
+
+.nav-links {
     display: flex;
     gap: 40px;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-.nav_link {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #888;
+.nav-link {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e5e5e5;
     text-decoration: none;
-    transition: color 0.3s ease;
-    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    position: relative;
 }
 
-.nav_link:hover, .nav_link.active {
-    color: #FFD700;
+.nav-link:hover, .nav-link.active {
+    color: white;
 }
 
-/* Mobile Responsive */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background-color: var(--accent);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.nav-cta:hover {
+    background-color: var(--accent-hover);
+}
+
 @media (max-width: 768px) {
-    .main_nav {
-        padding: 20px;
-        flex-direction: column;
-        gap: 20px;
-        background: rgba(0, 0, 0, 0.95); /* Darker background for readability */
-    }
-    
-    .routes {
-        display: flex;
-        gap: 20px;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .nav_link {
-        font-size: 0.7rem;
-        letter-spacing: 1px;
+    .nav-links {
+        display: none; /* Mobile menu implementation would go here */
     }
 }

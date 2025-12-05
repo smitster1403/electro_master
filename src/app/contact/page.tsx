@@ -3,50 +3,76 @@
 import React from "react";
 import "../styling/contact.css";
 
-const Contact = () => {
+const ContactPage = () => {
     return (
-        <div className="contact_main">
-            <div className="contact_hero">
-                <h1 className="contact_title">Initiate</h1>
-                <div className="contact_subtitle">START THE CONVERSATION</div>
+        <div className="contact-page">
+            <div className="contact-header">
+                <h1 className="contact-title">CONTACT US</h1>
+                <p className="contact-subtitle">
+                    Get in touch with our sales team for quotes and technical inquiries.
+                </p>
             </div>
 
-            <div className="contact_content">
-                <div className="contact_info_panel">
-                    <div className="info_group">
-                        <span className="info_label">EMAIL</span>
-                        <a href="mailto:sales@electromaster.co.bw" className="info_value">sales@electromaster.co.bw</a>
-                    </div>
-                    <div className="info_group">
-                        <span className="info_label">PHONE</span>
-                        <a href="tel:+2673912345" className="info_value">+267 391 2345</a>
-                    </div>
-                    <div className="info_group">
-                        <span className="info_label">HQ</span>
-                        <span className="info_value">Gaborone, Botswana</span>
-                    </div>
-                </div>
+            <div className="contact-container">
+                <div className="contact-card">
+                    <div className="contact-form">
+                        <form>
+                            <div className="form-group">
+                                <label className="form-label">Full Name</label>
+                                <input type="text" className="form-input" placeholder="John Doe" />
+                            </div>
 
-                <div className="contact_form_panel">
-                    <form>
-                        <div className="form_group">
-                            <label className="form_label">Name</label>
-                            <input type="text" className="form_input" placeholder="ENTER YOUR NAME" />
+                            <div className="form-group">
+                                <label className="form-label">Email Address</label>
+                                <input type="email" className="form-input" placeholder="john@company.com" />
+                            </div>
+
+                            <div className="form-group">
+                                <label className="form-label">Company Name</label>
+                                <input type="text" className="form-input" placeholder="Industrial Corp Ltd." />
+                            </div>
+
+                            <div className="form-group">
+                                <label className="form-label">Message</label>
+                                <textarea className="form-textarea" placeholder="Tell us about your project requirements..."></textarea>
+                            </div>
+
+                            <button type="submit" className="btn-primary btn-block">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <div className="contact-info">
+                        <div className="info-block">
+                            <h3 className="info-title">Headquarters</h3>
+                            <p className="info-text">
+                                123 Industrial Sector 7<br/>
+                                Neo-Manufacturing District<br/>
+                                New York, NY 10001
+                            </p>
                         </div>
-                        <div className="form_group">
-                            <label className="form_label">Email</label>
-                            <input type="email" className="form_input" placeholder="ENTER YOUR EMAIL" />
+
+                        <div className="info-block">
+                            <h3 className="info-title">Phone</h3>
+                            <p className="info-text">
+                                +1 (555) 019-2834<br/>
+                                Mon-Fri, 8am - 6pm EST
+                            </p>
                         </div>
-                        <div className="form_group">
-                            <label className="form_label">Message</label>
-                            <textarea className="form_textarea" rows={4} placeholder="TELL US ABOUT YOUR PROJECT"></textarea>
+
+                        <div className="info-block">
+                            <h3 className="info-title">Email</h3>
+                            <p className="info-text">
+                                sales@electromaster.com<br/>
+                                support@electromaster.com
+                            </p>
                         </div>
-                        <button type="submit" className="submit_btn">SEND TRANSMISSION</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Contact;
+export default ContactPage;

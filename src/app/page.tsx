@@ -1,107 +1,79 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import React from "react";
+import Link from "next/link";
 import "./styling/home.css";
 
 export default function Home() {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
-  const heroRef = useRef<HTMLElement>(null);
-  const collectionRef = useRef<HTMLElement>(null);
-
-  const allProducts = [
-    { name: "E6010", image: "/products/welding-rods/e6010.png", description: "Deep Penetration" },
-    { name: "E6013", image: "/products/welding-rods/e6013.png", description: "General Purpose" },
-    { name: "E7010", image: "/products/welding-rods/e7010.png", description: "High Tensile" },
-    { name: "E7018", image: "/products/welding-rods/e7018.png", description: "Low Hydrogen" },
-    { name: "Cast Iron", image: "/products/welding-rods/cast_iron.png", description: "Specialized Repair" },
-    { name: "Stainless", image: "/products/welding-rods/stainless_steel.png", description: "Corrosion Resistant" },
-    { name: "MIG Wire", image: "/products/wire/mig_wire.png", description: "GMAW Solid Wire" },
-  ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleElements(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = [heroRef.current, collectionRef.current];
-    elements.forEach(el => el && observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div className="home_main">
-      {/* Hero Section - Cinematic Industrial */}
-      <section ref={heroRef} id="hero" className="v2_hero">
-        <div className="hero_text_layer">
-          <h1 className="hero_huge_text">
-            FORGED<br />
-            <span className="text_outline">PERFECTION</span>
-          </h1>
+    <main>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-video-container">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="hero-video"
+          >
+            <source src="/background_video_hero.mp4" type="video/mp4" />
+          </video>
         </div>
+        <div className="hero-overlay"></div>
         
-        <div className="hero_image_layer">
-          <div className="floating_product">
-            <Image 
-              src="/products/welding-rods/e6010.png" 
-              alt="E6010 Welding Rod" 
-              width={140} 
-              height={600}
-              className="product_img_v2"
-              priority
-            />
-            <div className="product_glow"></div>
-          </div>
-        </div>
-
-        <div className="hero_details">
-          <div className="detail_block">
-            <span className="gold_label">MATERIAL</span>
-            <p>Cellulose Sodium</p>
-          </div>
-          <div className="detail_block">
-            <span className="gold_label">STRENGTH</span>
-            <p>62,000 PSI</p>
-          </div>
-          <div className="detail_block">
-            <span className="gold_label">ORIGIN</span>
-            <p>ElectroMaster Ind.</p>
+        <div className="hero-content">
+          <span className="hero-subtitle">INDUSTRIAL GRADE SOLUTIONS</span>
+          <h1 className="hero-title">ENGINEERED FOR<br />PERFORMANCE</h1>
+          <p className="hero-description">
+            Electro Master delivers premium welding consumables and industrial hardware designed for the most demanding environments. Reliability you can trust.
+          </p>
+          <div className="hero-actions">
+            <Link href="/products" className="btn-primary">
+              View Catalog
+            </Link>
+            <Link href="/contact" className="btn-outline">
+              Request Quote
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Editorial Product Strip */}
-      <section 
-        ref={collectionRef} 
-        id="collection" 
-        className={`v2_strip ${visibleElements.has('collection') ? 'visible' : ''}`}
-      >
-        <div className="strip_header">
-          <h2>THE COLLECTION</h2>
-          <div className="line"></div>
-        </div>
-        
-        <div className="strip_grid">
-          {allProducts.map((product, index) => (
-            <a href="/products" key={index} className="strip_item">
-              <div className="item_number">0{index + 1}</div>
-              <div className="item_content">
-                <div className="item_name">{product.name}</div>
-                <div className="item_desc">{product.description}</div>
-              </div>
-              <div className="item_action">VIEW SPECS &rarr;</div>
-            </a>
-          ))}
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="container-width">
+          <div className="section-header">
+            <h2 className="section-title">WHY CHOOSE ELECTRO MASTER</h2>
+            <p className="section-subtitle">Setting the standard for industrial supply since 2024</p>
+          </div>
+
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon"></div>
+              <h3 className="feature-title">Premium Quality</h3>
+              <p className="feature-text">
+                Every electrode and component is rigorously tested to meet international standards (AWS, ISO, DIN), ensuring consistent performance in every weld.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon"></div>
+              <h3 className="feature-title">Rapid Logistics</h3>
+              <p className="feature-text">
+                Our optimized supply chain ensures that your critical materials arrive on site, on time. We understand that downtime is not an option.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon"></div>
+              <h3 className="feature-title">Technical Support</h3>
+              <p className="feature-text">
+                Backed by a team of experienced metallurgists and engineers ready to assist with selection and application guidance.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
