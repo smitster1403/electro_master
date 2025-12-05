@@ -1,215 +1,109 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import "../styling/products.css";
 
 const ProductsPage = () => {
-    const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
-    const categoriesRef = useRef<HTMLElement>(null);
-
     const weldingRods = [
         {
-            name: "E6010",
+            id: "WR-6010",
+            name: "E6010 Cellulose",
             image: "/products/welding-rods/e6010.png",
-            description: "Deep penetration cellulose electrode for all-position welding",
-            specs: [
-                "AWS Classification: E6010",
-                "Tensile Strength: 62,000 PSI",
-                "Applications: Pipeline, structural work",
-                "Positions: All positions",
-                "Current: DC+ (DCEP)"
-            ]
+            description: "Deep penetration cellulose electrode designed for all-position welding. Ideal for pipelines and structural steel.",
+            specs: { class: "AWS E6010", strength: "62,000 PSI", current: "DC+" }
         },
         {
-            name: "E6013",
+            id: "WR-6013",
+            name: "E6013 General Purpose",
             image: "/products/welding-rods/e6013.png",
-            description: "General purpose rutile electrode with excellent arc stability",
-            specs: [
-                "AWS Classification: E6013",
-                "Tensile Strength: 60,000 PSI",
-                "Applications: General fabrication",
-                "Positions: All positions",
-                "Current: AC or DC"
-            ]
+            description: "Versatile rutile electrode with excellent arc stability and low spatter. Perfect for general fabrication.",
+            specs: { class: "AWS E6013", strength: "60,000 PSI", current: "AC/DC" }
         },
         {
-            name: "E7010",
+            id: "WR-7010",
+            name: "E7010 High Tensile",
             image: "/products/welding-rods/e7010.png",
-            description: "High tensile strength electrode for critical applications",
-            specs: [
-                "AWS Classification: E7010",
-                "Tensile Strength: 70,000 PSI",
-                "Applications: Pressure vessels, bridges",
-                "Positions: All positions",
-                "Current: DC+ (DCEP)"
-            ]
+            description: "High tensile strength electrode for critical applications requiring superior mechanical properties.",
+            specs: { class: "AWS E7010", strength: "70,000 PSI", current: "DC+" }
         },
         {
-            name: "E7018",
+            id: "WR-7018",
+            name: "E7018 Low Hydrogen",
             image: "/products/welding-rods/e7018.png",
-            description: "Low hydrogen basic electrode for superior weld quality",
-            specs: [
-                "AWS Classification: E7018",
-                "Tensile Strength: 70,000 PSI",
-                "Applications: Structural, heavy construction",
-                "Positions: All positions",
-                "Current: AC or DC"
-            ]
+            description: "Premium low hydrogen iron powder electrode. The industry standard for code-quality welds.",
+            specs: { class: "AWS E7018", strength: "70,000 PSI", current: "AC/DC+" }
         },
         {
-            name: "Cast Iron Rod",
+            id: "WR-CAST",
+            name: "Cast Iron Special",
             image: "/products/welding-rods/cast_iron.png",
-            description: "Specialized electrode for cast iron repair and fabrication",
-            specs: [
-                "Type: Nickel-Iron alloy",
-                "Applications: Cast iron repair",
-                "Features: Machinable deposits",
-                "Positions: All positions",
-                "Preheating: Recommended"
-            ]
+            description: "Specialized nickel-based electrode for maintenance and repair of cast iron components.",
+            specs: { class: "Ni-Cl", strength: "Machinable", current: "AC/DC" }
         },
         {
-            name: "Stainless Steel Rod",
+            id: "WR-STAIN",
+            name: "Stainless Steel 308L",
             image: "/products/welding-rods/stainless_steel.png",
-            description: "Corrosion resistant electrode for stainless steel welding",
-            specs: [
-                "Type: 308L Stainless Steel",
-                "Applications: Food service, chemical",
-                "Features: Corrosion resistant",
-                "Positions: All positions",
-                "Current: AC or DC"
-            ]
+            description: "Corrosion resistant electrode for welding 304 and 308 stainless steels.",
+            specs: { class: "E308L-16", strength: "Resistant", current: "AC/DC" }
         }
     ];
-
-    const wires = [
-        {
-            name: "MIG Wire",
-            image: "/products/wire/mig_wire.png",
-            description: "Premium solid wire for MIG/GMAW welding applications",
-            specs: [
-                "Type: ER70S-6 Solid Wire",
-                "Diameter: 0.8mm - 1.6mm",
-                "Applications: Mild steel welding",
-                "Shielding Gas: CO2 or Ar/CO2",
-                "Packaging: 15kg spools"
-            ]
-        }
-    ];
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setVisibleElements(prev => new Set(prev).add(entry.target.id));
-                    }
-                });
-            },
-            { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
-        );
-
-        const elements = [categoriesRef.current];
-        elements.forEach(el => el && observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
 
     return (
-        <div className="products_main">
-            {/* Products Categories */}
-            <section 
-                ref={categoriesRef}
-                id="products-categories"
-                className={`products_categories ${visibleElements.has('products-categories') ? 'visible' : ''}`}
-            >
-                <div className="categories_content">
-                    {/* Welding Rods Section */}
-                    <div className="category_section">
-                        <div className="category_header">
-                            <h2 className="category_title">Welding Electrodes</h2>
-                            <p className="category_description">
-                                Professional-grade welding rods engineered for superior performance across 
-                                all welding applications. Each electrode is manufactured to meet stringent 
-                                quality standards and deliver consistent results.
-                            </p>
-                        </div>
-                        <div className="products_grid">
-                            {weldingRods.map((product, index) => (
-                                <div key={index} className="product_item">
-                                    <div className="product_image_wrapper">
-                                        <Image
-                                            src={product.image}
-                                            alt={product.name}
-                                            width={300}
-                                            height={300}
-                                            className="product_image"
-                                            style={{
-                                                width: '100%',
-                                                height: 'auto',
-                                                objectFit: 'contain'
-                                            }}
-                                        />
-                                    </div>
-                                    <h3 className="product_name">{product.name}</h3>
-                                    <p className="product_description">{product.description}</p>
-                                    <div className="product_specs">
-                                        <h4>Specifications</h4>
-                                        <ul>
-                                            {product.specs.map((spec, specIndex) => (
-                                                <li key={specIndex}>{spec}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+        <div className="products-page">
+            <div className="products-header">
+                <h1 className="products-title">PRODUCT CATALOG</h1>
+                <p className="products-subtitle">
+                    High-performance welding consumables for industrial applications.
+                </p>
+            </div>
 
-                    {/* Wire Section */}
-                    <div className="category_section">
-                        <div className="category_header">
-                            <h2 className="category_title">Welding Wire</h2>
-                            <p className="category_description">
-                                High-quality solid wires designed for MIG/GMAW welding processes. 
-                                Our wires provide excellent arc stability and superior weld quality 
-                                for both industrial and fabrication applications.
-                            </p>
-                        </div>
-                        <div className="products_grid">
-                            {wires.map((product, index) => (
-                                <div key={index} className="product_item">
-                                    <div className="product_image_wrapper">
-                                        <Image
-                                            src={product.image}
-                                            alt={product.name}
-                                            width={300}
-                                            height={300}
-                                            className="product_image"
-                                            style={{
-                                                width: '100%',
-                                                height: 'auto',
-                                                objectFit: 'contain'
-                                            }}
-                                        />
-                                    </div>
-                                    <h3 className="product_name">{product.name}</h3>
-                                    <p className="product_description">{product.description}</p>
-                                    <div className="product_specs">
-                                        <h4>Specifications</h4>
-                                        <ul>
-                                            {product.specs.map((spec, specIndex) => (
-                                                <li key={specIndex}>{spec}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
+            <div className="products-container">
+                <div className="products-grid">
+                    {weldingRods.map((product, index) => (
+                        <div key={index} className="product-card">
+                            <div className="product-image-container">
+                                <Image 
+                                    src={product.image} 
+                                    alt={product.name} 
+                                    width={160} 
+                                    height={160}
+                                    style={{ objectFit: "contain", maxHeight: "160px" }}
+                                />
+                            </div>
+
+                            <div className="product-content">
+                                <span className="product-id">ITEM #{product.id}</span>
+                                <h2 className="product-name">{product.name}</h2>
+                                <p className="product-desc">{product.description}</p>
+                                
+                                <ul className="specs-list">
+                                    <li>
+                                        <span className="specs-label">Classification</span>
+                                        <span className="specs-value">{product.specs.class}</span>
+                                    </li>
+                                    <li>
+                                        <span className="specs-label">Tensile Strength</span>
+                                        <span className="specs-value">{product.specs.strength}</span>
+                                    </li>
+                                    <li>
+                                        <span className="specs-label">Current Type</span>
+                                        <span className="specs-value">{product.specs.current}</span>
+                                    </li>
+                                </ul>
+
+                                <div className="product-action">
+                                    <Link href="/contact" className="btn-primary btn-block">
+                                        Request Quote
+                                    </Link>
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
-            </section>
+            </div>
         </div>
     );
 };
