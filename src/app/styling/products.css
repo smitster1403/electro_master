@@ -10,7 +10,7 @@
 /* ── Header banner ────────────────────────────────────────── */
 .products-header {
     background: linear-gradient(135deg, #0c3a8f 0%, #1253c4 40%, #1f6dea 100%);
-    padding: calc(var(--nav-h) + 24px) 0 72px;
+    padding: 116px 0 72px;
     text-align: center;
 }
 

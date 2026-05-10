@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "../styling/navbar.css";
 
 const NavBar = () => {
-    const pathname = usePathname();
-    const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+    const pathname  = usePathname();
+    const headerRef = useRef<HTMLElement>(null);
+
+    const [scrolled,  setScrolled]  = useState(false);
+    const [nearNav,   setNearNav]   = useState(false);
+    const [menuOpen,  setMenuOpen]  = useState(false);
 
     const isActive = (p: string) => pathname === p ? "active" : "";
 
+    /* Scroll detection — triggers is-scrolled class */
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener("scroll", onScroll, { passive: true });
@@ -20,23 +24,52 @@ const NavBar = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    /*
+     * Proximity detection — show nav-row when mouse is within 15 px
+     * of the header's current bottom edge (works whether collapsed or
+     * expanded, because getBoundingClientRect reflects live height).
+     */
+    useEffect(() => {
+        const onMove = (e: MouseEvent) => {
+            if (!headerRef.current) return;
+            const bottom = headerRef.current.getBoundingClientRect().bottom;
+            setNearNav(e.clientY <= bottom + 15);
+        };
+        window.addEventListener("mousemove", onMove, { passive: true });
+        return () => window.removeEventListener("mousemove", onMove);
+    }, []);
+
+    /* Close mobile drawer on route change */
     useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+    /*
+     * nav-open = true when:
+     *   • user is at the top of the page (!scrolled), OR
+     *   • user has scrolled but the mouse is near the navbar
+     */
+    const navOpen = !scrolled || nearNav;
 
     return (
         <header
-            className={`site-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
+            ref={headerRef}
+            className={[
+                "site-header",
+                scrolled  ? "is-scrolled" : "",
+                navOpen   ? "nav-open"    : "",
+                menuOpen  ? "menu-open"   : "",
+            ].join(" ")}
             role="banner"
         >
             <nav className="nav-inner wrap" aria-label="Main navigation">
 
-                {/* ── Row 1: Logo centred, burger at right (mobile only) ── */}
+                {/* ── Row 1: Logo centred (always visible) ── */}
                 <div className="nav-top">
                     <Link href="/" className="nav-brand" aria-label="ElectroMaster — home">
                         <Image
                             src="/logo.png"
                             alt=""
-                            width={32}
-                            height={32}
+                            width={42}
+                            height={42}
                             className="nav-logo-img"
                             priority
                         />
@@ -56,7 +89,7 @@ const NavBar = () => {
                     </button>
                 </div>
 
-                {/* ── Row 2: Links + CTA, evenly spaced (desktop only) ── */}
+                {/* ── Row 2: Links — driven by nav-open class ── */}
                 <div className="nav-row">
                     <ul className="nav-links" role="list" aria-label="Site pages">
                         <li>
@@ -75,7 +108,7 @@ const NavBar = () => {
                             </Link>
                         </li>
                     </ul>
-                    <Link href="/contact" className="btn btn-primary nav-cta">
+                    <Link href="/contact" className={`nav-link ${isActive("/contact")}`}>
                         Contact Sales
                     </Link>
                 </div>

@@ -1,6 +1,9 @@
 /* ══════════════════════════════════════════════════════════════
-   NAVBAR — Two-row: logo centred on top, links evenly spaced below
-   Transparent over hero → solid white on scroll
+   NAVBAR
+   At top of page: nav-open class applied → links always visible.
+   On scroll: collapses to logo only.
+   Mouse within 15px of header: nav-open re-applied → links visible.
+   Transparent over hero → solid white on scroll.
 ══════════════════════════════════════════════════════════════ */
 
 .site-header {
@@ -13,7 +16,7 @@
 }
 
 .site-header.is-scrolled {
-    background: rgba(255,255,255,0.97);
+    background: rgba(255,255,255,0.96);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -22,23 +25,23 @@
 .nav-inner {
     display: flex;
     flex-direction: column;
-    padding: 12px 0 9px;
-    gap: 2px;
+    padding: 10px 0 8px;
+    gap: 0;
 }
 
-/* ── Row 1: Logo centred ─────────────────────────────────── */
+/* ── Row 1: Logo centred (always visible) ────────────────── */
 .nav-top {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* anchor for burger absolute positioning */
-    min-height: 36px;
+    position: relative;
+    min-height: 42px;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     text-decoration: none;
 }
 
@@ -46,7 +49,7 @@
 
 .nav-brand-name {
     font-family: var(--font-syne), 'Syne', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: -0.01em;
     color: var(--white);
@@ -60,77 +63,103 @@
     font-style: normal;
 }
 
-.is-scrolled .nav-brand-name      { color: var(--ink); }
-.is-scrolled .nav-brand-name em   { color: var(--blue); }
+.is-scrolled .nav-brand-name    { color: var(--ink); }
+.is-scrolled .nav-brand-name em { color: var(--blue); }
 
-/* ── Row 2: Links + CTA, evenly spaced ──────────────────── */
+/* ── Row 2: Links — collapsed, reveal on hover ───────────── */
 .nav-row {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+    transition:
+        max-height 0.32s var(--ease),
+        opacity    0.25s var(--ease),
+        padding    0.32s var(--ease);
+}
+
+/* Reveal when nav-open class is applied (at top of page or mouse near header) */
+.nav-open .nav-row {
+    max-height: 48px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 4px 0 6px;
 }
 
 /*
  * display:contents removes the <ul> box — its <li> children
- * become direct flex children of .nav-row, enabling true
- * 4-item space-evenly distribution with the CTA button.
+ * become direct flex children of .nav-row, so all four items
+ * (3 links + Contact Sales) share the same space-evenly layout.
  */
 .nav-links {
     display: contents;
     list-style: none;
 }
 
-/* li items now participate directly in .nav-row flex layout */
-.nav-links li { display: flex; align-items: center; }
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
 
+/* All nav items — identical style, no background */
 .nav-link {
     font-family: var(--font-inter), sans-serif;
     font-size: 0.82rem;
     font-weight: 500;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 4px;
-    transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+    padding: 4px 2px;
     position: relative;
     white-space: nowrap;
+    transition: color 0.2s var(--ease);
+    background: none;
+    border: none;
+}
+
+/* Underline on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s var(--ease);
 }
 
 .nav-link:hover {
     color: var(--white);
-    background: rgba(255,255,255,0.1);
 }
 
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Active state — underline always visible */
 .nav-link.active {
     color: var(--white);
-    background: rgba(255,255,255,0.12);
 }
 
 .nav-link.active::after {
-    content: '';
-    position: absolute;
-    inset-block-end: -2px;
-    inset-inline: 12px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 1px;
+    transform: scaleX(1);
 }
 
 /* Scrolled state — links go dark */
 .is-scrolled .nav-link              { color: var(--text-mid); }
-.is-scrolled .nav-link:hover        { color: var(--ink); background: var(--surface); }
-.is-scrolled .nav-link.active       { color: var(--blue); background: var(--blue-light); }
-.is-scrolled .nav-link.active::after { background: var(--blue); }
+.is-scrolled .nav-link:hover        { color: var(--ink); }
+.is-scrolled .nav-link.active       { color: var(--blue); }
+.is-scrolled .nav-link.active::after,
+.is-scrolled .nav-link:hover::after { background: currentColor; }
 
-/* CTA button */
-.nav-cta {
-    padding: 8px 20px;
-    font-size: 0.78rem;
-    white-space: nowrap;
-}
-
-/* ── Hamburger (mobile only, absolute in nav-top) ────────── */
+/* ── Hamburger (mobile only) ─────────────────────────────── */
 .nav-burger {
     display: none;
     position: absolute;
@@ -224,11 +253,14 @@
 }
 
 .drawer-contact a { text-decoration: none; color: inherit; transition: color 0.2s; }
-.drawer-contact a:hover { color: rgba(255,255,255,0.75); }
+.drawer-contact a:hover { color: rgba(255,255,255,0.8); }
 .is-scrolled .drawer-contact a:hover { color: var(--blue); }
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .nav-row    { display: none; }   /* hide desktop links + CTA */
-    .nav-burger { display: flex; }   /* show hamburger in nav-top */
+    /* Hide the desktop link row entirely on mobile */
+    .nav-open .nav-row,
+    .nav-row { display: none; }
+
+    .nav-burger { display: flex; }
 }
