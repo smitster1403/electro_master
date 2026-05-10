@@ -14,12 +14,12 @@ const Footer = () => {
 
                     {/* Brand column */}
                     <div className="footer-col footer-brand">
-                        <Link href="/" className="footer-logo" aria-label="Electro Master — home">
+                        <Link href="/" className="footer-logo" aria-label="ElectroMaster — home">
                             ELECTRO<em>MASTER</em>
                         </Link>
                         <p className="footer-tagline">
-                            Industrial-grade welding consumables and hardware engineered for
-                            the world&apos;s most demanding environments.
+                            Finest Quality Electrode — welding solutions you can rely on,
+                            manufactured in Gaborone, Botswana.
                         </p>
                         <div className="footer-social" aria-label="Social links">
                             <a
@@ -47,10 +47,11 @@ const Footer = () => {
                     <div className="footer-col">
                         <h3 className="footer-col-heading">Products</h3>
                         <ul className="footer-links">
-                            <li><Link href="/products">Welding Electrodes</Link></li>
-                            <li><Link href="/products">MIG Wires</Link></li>
-                            <li><Link href="/products">TIG Rods</Link></li>
-                            <li><Link href="/products">Specialty Alloys</Link></li>
+                            <li><Link href="/products">E6013 General-Purpose</Link></li>
+                            <li><Link href="/products">E7018 Structural</Link></li>
+                            <li><Link href="/products">E6010 Pipeline</Link></li>
+                            <li><Link href="/products">Stainless Steel Electrodes</Link></li>
+                            <li><Link href="/products">MIG Wire</Link></li>
                             <li><Link href="/products">View Full Catalog →</Link></li>
                         </ul>
                     </div>
@@ -60,10 +61,10 @@ const Footer = () => {
                         <h3 className="footer-col-heading">Company</h3>
                         <ul className="footer-links">
                             <li><Link href="/about">About Us</Link></li>
-                            <li><Link href="/about">Our Mission</Link></li>
+                            <li><Link href="/about">Our Values</Link></li>
                             <li><Link href="/about">Certifications</Link></li>
-                            <li><Link href="/about">Distribution Network</Link></li>
-                            <li><Link href="/contact">Careers</Link></li>
+                            <li><Link href="/about">Reseller Network</Link></li>
+                            <li><Link href="/contact">Contact Us</Link></li>
                         </ul>
                     </div>
 
@@ -71,16 +72,17 @@ const Footer = () => {
                     <div className="footer-col footer-contact-col">
                         <h3 className="footer-col-heading">Get In Touch</h3>
                         <address className="footer-address">
-                            <p>123 Industrial Sector 7</p>
-                            <p>New York, NY 10001</p>
+                            <p>Plot 22086, Unit 1/2</p>
+                            <p>G/West Industrial</p>
+                            <p>Gaborone, Botswana</p>
                         </address>
-                        <a href="tel:+15550192834" className="footer-contact-link">
-                            +1 (555) 019-2834
+                        <a href="tel:+26775552525" className="footer-contact-link">
+                            +267 7555 25 25
                         </a>
-                        <a href="mailto:sales@electromaster.com" className="footer-contact-link">
-                            sales@electromaster.com
+                        <a href="mailto:electromasterbots@gmail.com" className="footer-contact-link">
+                            electromasterbots@gmail.com
                         </a>
-                        <Link href="/contact" className="btn-primary footer-cta-btn">
+                        <Link href="/contact" className="btn btn-primary footer-cta-btn">
                             Request a Quote
                         </Link>
                     </div>

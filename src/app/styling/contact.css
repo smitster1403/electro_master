@@ -33,7 +33,7 @@
 .contact-hero-sub {
     font-size: 1.05rem;
     color: rgba(255,255,255,0.75);
-    max-width: 560px;
+    max-width: 800px;
     line-height: 1.65;
 }
 
@@ -44,7 +44,7 @@
     background: var(--white);
     box-shadow: var(--shadow-lg);
     display: grid;
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: 1fr 480px;
     overflow: hidden;
 }
 

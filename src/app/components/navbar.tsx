@@ -68,8 +68,8 @@ const NavBar = () => {
                         <Image
                             src="/logo.png"
                             alt=""
-                            width={42}
-                            height={42}
+                            width={58}
+                            height={58}
                             className="nav-logo-img"
                             priority
                         />
@@ -136,8 +136,8 @@ const NavBar = () => {
                     ))}
                 </ul>
                 <div className="drawer-contact">
-                    <a href="tel:+15550192834">+1 (555) 019-2834</a>
-                    <a href="mailto:sales@electromaster.com">sales@electromaster.com</a>
+                    <a href="tel:+26775552525">+267 7555 25 25</a>
+                    <a href="mailto:electromasterbots@gmail.com">electromasterbots@gmail.com</a>
                 </div>
             </div>
         </header>

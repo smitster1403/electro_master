@@ -5,76 +5,66 @@ import Image from "next/image";
 import Link from "next/link";
 import "../styling/products.css";
 
+const products = [
+    {
+        id:            "E6013",
+        category:      "electrodes",
+        name:          "E6013",
+        categoryLabel: "General-Purpose Electrode",
+        image:         "/products/welding-rods/e6013.png",
+    },
+    {
+        id:            "E7018",
+        category:      "electrodes",
+        name:          "E7018",
+        categoryLabel: "Structural Electrode",
+        image:         "/products/welding-rods/e7018.png",
+    },
+    {
+        id:            "E6010",
+        category:      "electrodes",
+        name:          "E6010",
+        categoryLabel: "Pipeline Electrode",
+        image:         "/products/welding-rods/e6010.png",
+    },
+    {
+        id:            "E7010",
+        category:      "electrodes",
+        name:          "E7010",
+        categoryLabel: "High-Penetration Electrode",
+        image:         "/products/welding-rods/e7010.png",
+    },
+    {
+        id:            "SS-ELEC",
+        category:      "electrodes",
+        name:          "Stainless Steel",
+        categoryLabel: "Corrosion-Resistant Electrode",
+        image:         "/products/welding-rods/stainless_steel.png",
+        variants:      ["309L", "316L"],
+    },
+    {
+        id:            "CI-ELEC",
+        category:      "electrodes",
+        name:          "Cast Iron",
+        categoryLabel: "Cast Iron Repair Electrode",
+        image:         "/products/welding-rods/cast_iron.png",
+        variants:      ["Machinable", "Non-machinable"],
+    },
+    {
+        id:            "MIG-WIRE",
+        category:      "wire",
+        name:          "MIG Wire",
+        categoryLabel: "Semi-Automatic Welding Wire",
+        image:         "/products/wire/mig_wire.png",
+    },
+];
+
 const ProductsPage = () => {
     const [activeCategory, setActiveCategory] = useState("all");
 
-    const weldingRods = [
-        {
-            id: "WR-6010",
-            category: "rods",
-            name: "E6010 Cellulose",
-            image: "/products/welding-rods/e6010.png",
-            description: "Deep penetration cellulose electrode designed for all-position welding. Ideal for pipelines and structural steel.",
-            specs: { class: "AWS E6010", strength: "62,000 PSI", current: "DC+" }
-        },
-        {
-            id: "WR-6013",
-            category: "rods",
-            name: "E6013 General Purpose",
-            image: "/products/welding-rods/e6013.png",
-            description: "Versatile rutile electrode with excellent arc stability and low spatter. Perfect for general fabrication.",
-            specs: { class: "AWS E6013", strength: "60,000 PSI", current: "AC/DC" }
-        },
-        {
-            id: "WR-7010",
-            category: "rods",
-            name: "E7010 High Tensile",
-            image: "/products/welding-rods/e7010.png",
-            description: "High tensile strength electrode for critical applications requiring superior mechanical properties.",
-            specs: { class: "AWS E7010", strength: "70,000 PSI", current: "DC+" }
-        },
-        {
-            id: "WR-7018",
-            category: "rods",
-            name: "E7018 Low Hydrogen",
-            image: "/products/welding-rods/e7018.png",
-            description: "Premium low hydrogen iron powder electrode. The industry standard for code-quality welds.",
-            specs: { class: "AWS E7018", strength: "70,000 PSI", current: "AC/DC+" }
-        },
-        {
-            id: "WR-CAST",
-            category: "rods",
-            name: "Cast Iron Special",
-            image: "/products/welding-rods/cast_iron.png",
-            description: "Specialized nickel-based electrode for maintenance and repair of cast iron components.",
-            specs: { class: "Ni-Cl", strength: "Machinable", current: "AC/DC" }
-        },
-        {
-            id: "WR-STAIN",
-            category: "rods",
-            name: "Stainless Steel 308L",
-            image: "/products/welding-rods/stainless_steel.png",
-            description: "Corrosion resistant electrode for welding 304 and 308 stainless steels.",
-            specs: { class: "E308L-16", strength: "Resistant", current: "AC/DC" }
-        }
-    ];
-
-    const migWires = [
-        {
-            id: "MW-70S6",
-            category: "wires",
-            name: "Premium MIG Wire",
-            image: "/products/wire/mig_wire.png",
-            description: "High-quality MIG welding wire suitable for various industrial applications. Excellent feedability and arc stability.",
-            specs: { class: "AWS ER70S-6", diameter: "0.035\"", spool: "33 lb" }
-        }
-    ];
-
-    const allProducts = [...weldingRods, ...migWires];
-    
-    const filteredProducts = activeCategory === "all" 
-        ? allProducts 
-        : allProducts.filter(p => p.category === activeCategory);
+    const filtered = activeCategory === "all"
+        ? products
+        : products.filter(p => p.category === activeCategory);
 
     return (
         <div className="products-page">
@@ -93,66 +83,55 @@ const ProductsPage = () => {
 
             <div className="products-container">
                 <div className="category-filter">
-                    <button 
-                        className={`filter-btn ${activeCategory === 'all' ? 'active' : ''}`}
-                        onClick={() => setActiveCategory('all')}
+                    <button
+                        className={`filter-btn ${activeCategory === "all" ? "active" : ""}`}
+                        onClick={() => setActiveCategory("all")}
                     >
                         All Products
                     </button>
-                    <button 
-                        className={`filter-btn ${activeCategory === 'rods' ? 'active' : ''}`}
-                        onClick={() => setActiveCategory('rods')}
+                    <button
+                        className={`filter-btn ${activeCategory === "electrodes" ? "active" : ""}`}
+                        onClick={() => setActiveCategory("electrodes")}
                     >
-                        Welding Rods
+                        Electrodes
                     </button>
-                    <button 
-                        className={`filter-btn ${activeCategory === 'wires' ? 'active' : ''}`}
-                        onClick={() => setActiveCategory('wires')}
+                    <button
+                        className={`filter-btn ${activeCategory === "wire" ? "active" : ""}`}
+                        onClick={() => setActiveCategory("wire")}
                     >
-                        MIG Wires
+                        MIG Wire
                     </button>
                 </div>
 
                 <div className="products-grid">
-                    {filteredProducts.map((product, index) => (
-                        <div key={index} className="product-card">
+                    {filtered.map((product) => (
+                        <div key={product.id} className="product-card">
                             <div className="product-image-container">
-                                <div className="image-wrapper">
-                                    <Image 
-                                        src={product.image} 
-                                        alt={product.name} 
-                                        width={160} 
-                                        height={160}
-                                        className="product-image"
-                                        style={{ objectFit: "contain" }}
-                                    />
+                                <Image
+                                    src={product.image}
+                                    alt={product.name}
+                                    fill
+                                    className="product-image"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                />
+                                <div className="product-badge">
+                                    {product.category === "wire" ? "WIRE" : "ELECTRODE"}
                                 </div>
-                                <div className="product-badge">{product.category === 'rods' ? 'ELECTRODE' : 'WIRE'}</div>
                             </div>
 
                             <div className="product-content">
-                                <div className="product-header-row">
-                                    <span className="product-id">{product.id}</span>
-                                    <span className="product-status">IN STOCK</span>
-                                </div>
-                                
+                                <span className="product-cat-label">{product.categoryLabel}</span>
                                 <h2 className="product-name">{product.name}</h2>
-                                <p className="product-desc">{product.description}</p>
-                                
-                                <div className="specs-container">
-                                    {Object.entries(product.specs).map(([key, value]) => (
-                                        <div key={key} className="spec-item">
-                                            <span className="spec-label">{key}</span>
-                                            <span className="spec-value">{value}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="product-action">
-                                    <Link href="/contact" className="btn-quote">
-                                        Request Quote
-                                    </Link>
-                                </div>
+                                {product.variants && (
+                                    <div className="product-variants">
+                                        {product.variants.map(v => (
+                                            <span key={v} className="product-variant">{v}</span>
+                                        ))}
+                                    </div>
+                                )}
+                                <Link href="/contact" className="btn-quote">
+                                    Request Quote
+                                </Link>
                             </div>
                         </div>
                     ))}

@@ -48,18 +48,34 @@
     );
 }
 
-/* ── Body: grows to fill all space above the stats strip ── */
+/* ── Body: two-column row pinned to bottom of hero ── */
 .hero-body {
     position: relative;
     z-index: 1;
     flex: 1;
-    /* Centre content vertically; padding-top guards against the navbar */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: clamp(40px, 6vw, 100px);
+    padding-top: var(--nav-h);
+    padding-bottom: 116px;
+    color: var(--white);
+}
+
+/* Left column: giant title */
+.hero-left {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Right column: subtitle + buttons, pinned to baseline of title */
+.hero-right {
+    width: clamp(280px, 32%, 520px);
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-top: var(--nav-h);
-    padding-bottom: 100px; /* breathing room above the 88px stats strip */
-    color: var(--white);
+    justify-content: flex-end;
+    padding-bottom: 6px;
 }
 
 .hero-label {
@@ -70,21 +86,19 @@
 
 .hero-title {
     font-family: var(--font-syne), 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 5.5vw, 5.5rem);
+    font-size: clamp(3.75rem, 8vw, 10rem);
     font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.06;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
     color: var(--white);
-    margin-bottom: 24px;
-    max-width: 820px;
+    margin: 0;
 }
 
 .hero-sub {
-    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
     color: rgba(255,255,255,0.72);
-    max-width: 480px;
-    line-height: 1.75;
-    margin-bottom: 36px;
+    line-height: 1.8;
+    margin-bottom: 40px;
 }
 
 .hero-actions {
@@ -159,7 +173,6 @@
     line-height: 1.35;
     letter-spacing: -0.01em;
     color: var(--ink);
-    max-width: 880px;
     padding-left: 40px;
     border-left: 4px solid var(--blue);
     margin-bottom: 40px;
@@ -562,10 +575,12 @@
 }
 
 @media (max-width: 900px) {
+    /* Hero: collapse to single column */
+    .hero-body         { flex-direction: column; align-items: flex-start; padding-bottom: 126px; }
+    .hero-right        { width: 100%; }
     /* Hero stats: 2×2 grid */
     .hero-stats        { height: 110px; }
     .hero-stats-grid   { grid-template-columns: repeat(2, 1fr); }
-    .hero-body         { padding-bottom: 120px; } /* clears the taller stats */
     .hero-stat:nth-child(2) { border-right: none; }
     .hero-stat:nth-child(3) {
         border-top: 1px solid rgba(255,255,255,0.08);
@@ -589,10 +604,10 @@
 }
 
 @media (max-width: 640px) {
-    .hero-title    { font-size: 2.1rem; }
+    .hero-title    { font-size: 2.2rem; }
     .hero-actions  { flex-direction: column; align-items: flex-start; }
     .hero-stats    { height: 120px; }
-    .hero-body     { padding-bottom: 132px; }
+    .hero-body     { padding-bottom: 136px; }
 
     .mission-text  { font-size: 1.2rem; padding-left: 24px; }
     .mission-meta  { padding-left: 28px; }

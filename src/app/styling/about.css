@@ -30,7 +30,7 @@
 
 .about-hero-lead {
     font-size: clamp(1rem, 1.5vw, 1.15rem);
-    max-width: 720px;
+    max-width: 1000px;
     color: rgba(255,255,255,0.78);
     line-height: 1.7;
 }
@@ -125,7 +125,7 @@
     color: var(--text-mid);
     font-size: 1rem;
     line-height: 1.7;
-    max-width: 600px;
+    max-width: 900px;
     margin-top: 16px;
 }
 

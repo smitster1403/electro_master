@@ -41,9 +41,9 @@
 
   /* ── Layout ─────────────────────────────────────────── */
   --nav-h:    64px;   /* collapsed height (logo row only) */
-  --max-w:    1200px;
-  --max-w-xl: 1400px;
-  --gutter:   clamp(20px, 4vw, 40px);
+  --max-w:    1440px;
+  --max-w-xl: 1700px;
+  --gutter:   clamp(24px, 4vw, 64px);
 
   /* ── Easing ─────────────────────────────────────────── */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -203,7 +203,7 @@ h1, h2, h3, h4 {
   color: var(--text-mid);
   font-size: 1.05rem;
   line-height: 1.7;
-  max-width: 600px;
+  max-width: 860px;
 }
 
 .section-header          { margin-bottom: 56px; }

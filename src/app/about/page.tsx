@@ -5,36 +5,40 @@ import Link from "next/link";
 import "../styling/about.css";
 
 const stats = [
-    { number: "500+",  label: "Active Clients" },
-    { number: "99.9%", label: "Delivery Accuracy" },
-    { number: "24/7",  label: "Technical Support" },
+    { number: "15+", label: "Hardware Store Resellers" },
+    { number: "7",   label: "Product Types" },
+    { number: "2",   label: "Certifications Pursued" },
 ];
 
 const values = [
     {
         num: "01",
-        title: "Uncompromising Quality",
-        desc: "Every electrode and wire we manufacture undergoes rigorous testing against AWS, ISO, and DIN standards. We do not ship a product until it meets — or exceeds — specification.",
+        title: "Quality You Can Rely On",
+        desc: "ElectroMaster products are manufactured to perform consistently, giving customers confidence on every job — from light fabrication to heavy structural work.",
     },
     {
         num: "02",
-        title: "Partnership, Not Transactions",
-        desc: "We invest in understanding each client's process, constraints, and goals. Our team acts as an extension of your engineering department — not just a catalogue.",
+        title: "Botswana-Based Support Team",
+        desc: "Dedicated local support team providing fast, knowledgeable assistance and expert welding advice — right here in Gaborone.",
     },
     {
         num: "03",
-        title: "Operational Reliability",
-        desc: "Downtime is never acceptable. Our optimised supply chain, real-time inventory management, and rapid fulfilment operations ensure your line keeps moving.",
+        title: "Customer-Centric Solutions",
+        desc: "We recommend the right electrodes for specific welding needs including structural steel, pipelines, food-grade stainless, and fabrication projects.",
     },
 ];
 
 const certBadges = [
-    { code: "AWS D1.1",   name: "Structural Welding Code" },
-    { code: "ISO 9001",   name: "Quality Management System" },
-    { code: "CE Mark",    name: "European Conformity" },
-    { code: "DIN EN 499", name: "Electrode Classification" },
-    { code: "SGS",        name: "Independent Verification" },
-    { code: "ASME IX",    name: "Welding Qualifications" },
+    {
+        code: "BOBS",
+        name: "BOS89-2010 — Certification in Process",
+        highlight: true,
+    },
+    {
+        code: "SAIW",
+        name: "Southern African Institute of Welding — Tests Passed",
+        highlight: false,
+    },
 ];
 
 const AboutPage = () => {
@@ -43,45 +47,44 @@ const AboutPage = () => {
 
             {/* ── Hero Banner ────────────────────────────────────────── */}
             <div className="about-hero">
-                <div className="container-width">
+                <div className="container-wide">
                     <span className="label about-hero-overline">
-                        Our Purpose
+                        Based in Botswana
                     </span>
-                    <h1 className="about-hero-title">Our Mission</h1>
+                    <h1 className="about-hero-title">Finest Quality Electrode</h1>
                     <p className="about-hero-lead">
-                        To provide the global industrial sector with welding solutions that define
-                        reliability, efficiency, and strength — from the shop floor to the most
-                        critical structural applications on earth.
+                        ElectroMaster delivers welding solutions you can rely on. We focus on
+                        producing durable, high-quality electrodes that keep projects moving
+                        forward — manufactured right here in Gaborone, Botswana.
                     </p>
                 </div>
             </div>
 
             {/* ── Who We Are ─────────────────────────────────────────── */}
             <section className="about-content-section" aria-label="Who we are">
-                <div className="container-width">
+                <div className="container-wide">
                     <div className="about-who-grid">
                         <div className="about-who-text">
                             <span className="label">Our Story</span>
                             <h2 className="section-title" style={{ marginTop: "12px" }}>Who We Are</h2>
                             <p>
-                                Electro Master was founded with a singular vision: to bridge the gap
-                                between precision manufacturing and the real demands of on-site
-                                industrial work. We understand that in construction, shipbuilding,
-                                and pipeline fabrication, the quality of the weld determines the
-                                integrity of the entire structure.
+                                ElectroMaster is a Botswana-based manufacturer dedicated to producing
+                                durable, high-quality welding electrodes. Our team combines practical
+                                expertise with a commitment to consistent performance, ensuring each
+                                weld meets the standards our clients deserve.
                             </p>
                             <p>
-                                We are not merely a supplier — we are partners embedded in your
-                                production line. Our team of industry veterans brings deep expertise
-                                in metallurgy and arc physics, ensuring that every product we ship
-                                performs flawlessly under pressure, in any environment, every time.
+                                Our products are suitable for structural steel, pipelines, general
+                                fabrication, and other industrial welding applications. Whether you
+                                are working on heavy construction, automotive repair, or food-grade
+                                stainless steel, we have the right electrode for the job.
                             </p>
                             <p>
-                                From standard SMAW electrodes to custom-formulated alloys for
-                                specialised applications, our product range is engineered to meet
-                                the tightest tolerances the industry demands.
+                                Based at Plot 22086, G/West Industrial, Gaborone, we supply
+                                through 15+ hardware stores across Botswana and continue to grow
+                                our reseller network to reach more job sites nationwide.
                             </p>
-                            <Link href="/contact" className="btn-navy about-who-btn">
+                            <Link href="/contact" className="btn btn-navy about-who-btn">
                                 Speak to Our Team
                             </Link>
                         </div>
@@ -94,7 +97,7 @@ const AboutPage = () => {
 
             {/* ── Stats Bar ──────────────────────────────────────────── */}
             <section className="about-stats-section" aria-label="Company statistics">
-                <div className="container-width">
+                <div className="container-wide">
                     <div className="about-stats-grid">
                         {stats.map((s) => (
                             <div className="about-stat-item" key={s.label}>
@@ -108,7 +111,7 @@ const AboutPage = () => {
 
             {/* ── Our Values ─────────────────────────────────────────── */}
             <section className="about-values-section" aria-label="Our values">
-                <div className="container-width">
+                <div className="container-wide">
                     <div className="section-header section-header--center">
                         <span className="label">What Drives Us</span>
                         <h2 className="section-title" style={{ marginTop: "12px" }}>Our Values</h2>
@@ -132,25 +135,23 @@ const AboutPage = () => {
 
             {/* ── Resellers / Network ────────────────────────────────── */}
             <section className="about-network-section" aria-label="Our distribution network">
-                <div className="container-width">
+                <div className="container-wide">
                     <div className="about-network-grid">
                         <div className="about-network-content">
                             <span className="label">Our Reach</span>
-                            <h2 className="section-title" style={{ marginTop: "12px" }}>A Network Built on Trust</h2>
+                            <h2 className="section-title" style={{ marginTop: "12px" }}>Available Across Botswana</h2>
                             <p>
-                                Our products reach job sites across the globe through a carefully
-                                selected network of authorised distributors and direct supply
-                                partnerships. Whether you are a single-site fabrication shop or a
-                                multinational EPC contractor, our logistics infrastructure ensures
-                                consistent availability and on-time delivery.
+                                ElectroMaster products are available in 15+ hardware stores across
+                                Botswana and growing. Our reseller network means you can find our
+                                electrodes close to your job site — without the wait.
                             </p>
                             <p>
-                                Becoming an Electro Master authorised reseller means access to
-                                technical training, co-branded materials, and dedicated account
-                                management — everything you need to serve your customers with
-                                confidence.
+                                Becoming an ElectroMaster authorised reseller gives you access to
+                                a trusted, locally manufactured product line with a dedicated
+                                support team to assist both you and your customers with technical
+                                welding advice.
                             </p>
-                            <Link href="/contact" className="btn-outline-dark about-network-btn">
+                            <Link href="/contact" className="btn btn-outline-dark about-network-btn">
                                 Enquire About Reselling
                             </Link>
                         </div>
@@ -163,23 +164,28 @@ const AboutPage = () => {
 
             {/* ── Certifications ─────────────────────────────────────── */}
             <section className="about-cert-section" aria-label="Certifications and standards">
-                <div className="container-width">
+                <div className="container-wide">
                     <div className="about-cert-inner">
                         <div className="about-cert-image-wrap">
                             <div className="img-ph" aria-hidden="true" />
                         </div>
                         <div className="about-cert-content">
                             <span className="label">Quality Assurance</span>
-                            <h2 className="section-title" style={{ marginTop: "12px" }}>Standards We Uphold</h2>
+                            <h2 className="section-title" style={{ marginTop: "12px" }}>Our Certifications</h2>
                             <p>
-                                Every product leaving our facilities is tested against the world&apos;s
-                                leading welding and quality standards. Our commitment to certification
-                                is not a checkbox — it is the foundation of the trust our clients
-                                place in us.
+                                ElectroMaster is actively pursuing leading industry certifications
+                                to demonstrate the quality and consistency our clients already
+                                experience on the job. We are committed to meeting and exceeding
+                                national and regional welding standards.
                             </p>
                             <div className="about-cert-badges" role="list">
                                 {certBadges.map((c) => (
-                                    <div className="about-cert-badge" role="listitem" key={c.code}>
+                                    <div
+                                        className="about-cert-badge"
+                                        role="listitem"
+                                        key={c.code}
+                                        style={c.highlight ? { borderColor: "var(--blue)", background: "var(--blue-light)" } : {}}
+                                    >
                                         <span className="acb-code">{c.code}</span>
                                         <span className="acb-name">{c.name}</span>
                                     </div>
@@ -192,15 +198,15 @@ const AboutPage = () => {
 
             {/* ── CTA ────────────────────────────────────────────────── */}
             <section className="about-cta-section" aria-label="Contact us">
-                <div className="container-width">
-                    <h2 className="about-cta-heading">Partner with Electro Master</h2>
+                <div className="container-wide">
+                    <h2 className="about-cta-heading">Partner with ElectroMaster</h2>
                     <p className="about-cta-sub">
-                        Ready to bring Electro Master quality to your production line?
-                        Speak to our team and receive a tailored quote within 24 hours.
+                        Ready to bring ElectroMaster quality to your project?
+                        Get in touch and our team will recommend the right electrode for you.
                     </p>
                     <div className="about-cta-actions">
-                        <Link href="/contact" className="btn-primary">Get a Quote</Link>
-                        <Link href="/products" className="btn-outline">View Products</Link>
+                        <Link href="/contact" className="btn btn-primary">Get a Quote</Link>
+                        <Link href="/products" className="btn btn-ghost">View Products</Link>
                     </div>
                 </div>
             </section>

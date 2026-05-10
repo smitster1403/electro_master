@@ -35,7 +35,12 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 42px;
+    min-height: 62px;
+    transition: min-height 0.35s var(--ease);
+}
+
+.is-scrolled .nav-top {
+    min-height: 44px;
 }
 
 .nav-brand {
@@ -45,17 +50,27 @@
     text-decoration: none;
 }
 
-.nav-logo-img { border-radius: 4px; }
+.nav-logo-img {
+    border-radius: 4px;
+    width: 58px;
+    height: 58px;
+    transition: width 0.35s var(--ease), height 0.35s var(--ease);
+}
+
+.is-scrolled .nav-logo-img {
+    width: 36px;
+    height: 36px;
+}
 
 .nav-brand-name {
     font-family: var(--font-syne), 'Syne', sans-serif;
-    font-size: 1.4rem;
+    font-size: 3.625rem;
     font-weight: 800;
     letter-spacing: -0.01em;
     color: var(--white);
     line-height: 1;
     font-style: normal;
-    transition: color 0.35s var(--ease);
+    transition: color 0.35s var(--ease), font-size 0.35s var(--ease);
 }
 
 .nav-brand-name em {
@@ -63,7 +78,7 @@
     font-style: normal;
 }
 
-.is-scrolled .nav-brand-name    { color: var(--ink); }
+.is-scrolled .nav-brand-name    { color: var(--ink); font-size: 1.75rem; }
 .is-scrolled .nav-brand-name em { color: var(--blue); }
 
 /* ── Row 2: Links — collapsed, reveal on hover ───────────── */

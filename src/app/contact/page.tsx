@@ -9,20 +9,20 @@ const ContactPage = () => {
 
             {/* ── Banner ────────────────────────────────────────────── */}
             <div className="contact-hero">
-                <div className="container-width">
+                <div className="container-wide">
                     <span className="label contact-hero-overline">
                         Reach Our Team
                     </span>
                     <h1 className="contact-hero-title">Contact Us</h1>
                     <p className="contact-hero-sub">
-                        For quotes, technical enquiries, or partnership discussions —
-                        our sales engineers respond within one business day.
+                        For quotes, technical enquiries, or reseller partnerships —
+                        our team in Gaborone responds promptly to every message.
                     </p>
                 </div>
             </div>
 
             {/* ── Card ─────────────────────────────────────────────── */}
-            <div className="contact-body container-width">
+            <div className="contact-body container-wide">
                 <div className="contact-card">
 
                     {/* Form */}
@@ -68,7 +68,7 @@ const ContactPage = () => {
                                         id="cf-company"
                                         type="text"
                                         className="form-input"
-                                        placeholder="Industrial Corp Ltd."
+                                        placeholder="Your Company"
                                         autoComplete="organization"
                                     />
                                 </div>
@@ -80,7 +80,7 @@ const ContactPage = () => {
                                         id="cf-phone"
                                         type="tel"
                                         className="form-input"
-                                        placeholder="+1 (555) 000-0000"
+                                        placeholder="+267 7000 0000"
                                         autoComplete="tel"
                                     />
                                 </div>
@@ -111,7 +111,7 @@ const ContactPage = () => {
                                 />
                             </div>
 
-                            <button type="submit" className="btn-primary btn-block btn-submit">
+                            <button type="submit" className="btn btn-primary btn-block btn-submit">
                                 Send Message
                             </button>
                         </form>
@@ -123,44 +123,39 @@ const ContactPage = () => {
                         <div className="info-block">
                             <h3 className="info-heading">Headquarters</h3>
                             <address className="info-text">
-                                123 Industrial Sector 7<br />
-                                Neo-Manufacturing District<br />
-                                New York, NY 10001
+                                Plot 22086, Unit 1/2<br />
+                                G/West Industrial<br />
+                                Gaborone, Botswana
                             </address>
                         </div>
 
                         <div className="info-block">
                             <h3 className="info-heading">Phone</h3>
                             <p className="info-text">
-                                <a href="tel:+15550192834">+1 (555) 019-2834</a>
+                                <a href="tel:+26775552525">+267 7555 25 25</a>
                             </p>
-                            <p className="info-hours">Mon – Fri, 8 am – 6 pm EST</p>
                         </div>
 
                         <div className="info-block">
                             <h3 className="info-heading">Email</h3>
                             <p className="info-text">
-                                <a href="mailto:sales@electromaster.com">sales@electromaster.com</a>
-                            </p>
-                            <p className="info-text">
-                                <a href="mailto:support@electromaster.com">support@electromaster.com</a>
+                                <a href="mailto:electromasterbots@gmail.com">electromasterbots@gmail.com</a>
                             </p>
                         </div>
 
                         <div className="info-block">
                             <h3 className="info-heading">Response Time</h3>
                             <p className="info-text">
-                                All enquiries receive a response within one business day.
-                                Urgent orders may be escalated by phone.
+                                All enquiries receive a prompt response from our local team.
+                                For urgent technical support our team is available to assist.
                             </p>
                         </div>
 
                         <div className="info-certifications">
-                            <span className="info-cert-label">Quality Assured</span>
+                            <span className="info-cert-label">Certifications</span>
                             <div className="info-cert-badges">
-                                <span>ISO 9001</span>
-                                <span>AWS</span>
-                                <span>CE</span>
+                                <span>BOBS</span>
+                                <span>SAIW</span>
                             </div>
                         </div>
 

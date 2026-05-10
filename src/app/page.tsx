@@ -8,72 +8,72 @@ import "./styling/home.css";
 /* ─── Static data ─────────────────────────────────────────────────────── */
 
 const heroStats = [
-    { number: "500+",  label: "Active Clients" },
-    { number: "99.9%", label: "Delivery Accuracy" },
-    { number: "15+",   label: "Product Lines" },
+    { number: "15+",   label: "Resellers Nationwide" },
+    { number: "7",     label: "Product Lines" },
+    { number: "100%",  label: "Local Manufacturing" },
     { number: "24 / 7",label: "Technical Support" },
 ];
 
 const pillars = [
-    { id: "01", title: "ISO 9001 Certified",      desc: "Third-party verified quality management" },
-    { id: "02", title: "AWS Qualified",            desc: "Full American Welding Society compliance" },
-    { id: "03", title: "Global Distribution",     desc: "Delivering to job sites worldwide" },
-    { id: "04", title: "Technical Support",       desc: "Engineers on-call around the clock" },
-    { id: "05", title: "Custom Formulations",     desc: "Bespoke alloys for critical applications" },
-    { id: "06", title: "Same-Day Fulfilment",     desc: "Order by 2 pm — ships same day" },
+    { id: "01", title: "BOBS Certified",        desc: "BOS89-2010 certification in process — meeting Botswana national standards" },
+    { id: "02", title: "SAIW Approved",         desc: "Southern African Institute of Welding tests passed" },
+    { id: "03", title: "15+ Resellers",         desc: "Available in hardware stores and growing across Botswana" },
+    { id: "04", title: "Technical Support",     desc: "Dedicated local team for expert welding advice and assistance" },
+    { id: "05", title: "Botswana Made",         desc: "Locally manufactured in Gaborone — supporting the local economy" },
+    { id: "06", title: "Full Electrode Range",  desc: "General-purpose, structural, pipeline, stainless, and cast iron grades" },
 ];
 
 const products = [
     {
-        id:       "WR-7018",
-        size:     "hero",
-        cat:      "SMAW Electrode",
-        name:     "E7018 Low Hydrogen",
-        desc:     "The industry gold standard for code-quality structural welds. Low hydrogen, iron-powder formulation delivering exceptional tensile strength and crack resistance on critical applications.",
-        specs:    [
-            { k: "Classification", v: "AWS E7018" },
-            { k: "Min. Tensile",   v: "70,000 PSI" },
-            { k: "Current",        v: "AC / DC+" },
+        id:    "E7018",
+        size:  "hero",
+        cat:   "Structural Electrode",
+        name:  "E7018 Structural",
+        desc:  "High strength, low hydrogen electrode for structural steel, bridges, and heavy construction. Crack resistant with consistent performance on critical applications.",
+        specs: [
+            { k: "Classification", v: "E7018" },
+            { k: "Diameters",      v: "2.5 – 4.0 mm" },
+            { k: "Packaging",      v: "1KG / 4KG / 20KG" },
         ],
     },
     {
-        id:       "WR-6013",
-        size:     "sm",
-        cat:      "SMAW Electrode",
-        name:     "E6013 General Purpose",
-        desc:     "Versatile rutile electrode delivering excellent arc stability, minimal spatter, and a smooth bead across all positions — ideal for general fabrication.",
-        specs:    [{ k: "Classification", v: "AWS E6013" }, { k: "Current", v: "AC / DC" }],
+        id:    "E6013",
+        size:  "sm",
+        cat:   "General-Purpose Electrode",
+        name:  "E6013 General Purpose",
+        desc:  "Easy to use with a smooth arc and minimal spatter — ideal for light structural work, thin materials, and general fabrication.",
+        specs: [{ k: "Classification", v: "E6013" }, { k: "Current", v: "AC / DC" }],
     },
     {
-        id:       "MW-70S6",
-        size:     "sm",
-        cat:      "GMAW Wire",
-        name:     "MIG Wire ER70S-6",
-        desc:     "High-quality solid wire with superior deoxidation for cleaner, stronger welds — even on mill-scale or lightly rusty base metal.",
-        specs:    [{ k: "Classification", v: "AWS ER70S-6" }, { k: "Diameter", v: "0.035\"" }],
+        id:    "MIG-WIRE",
+        size:  "sm",
+        cat:   "Semi-Automatic Wire",
+        name:  "MIG Wire",
+        desc:  "High-performance wire with excellent bead appearance and arc stability — suitable for fabrication, automotive repair, and general maintenance.",
+        specs: [{ k: "Diameter Range", v: "0.80 – 1.20 mm" }, { k: "Type", v: "Semi-Automatic" }],
     },
 ];
 
 const capabilities = [
     {
         num:   "01",
-        title: "Covered Arc Electrodes",
-        desc:  "A complete range of SMAW electrodes — cellulosic, rutile, low-hydrogen, and specialty grades for every industrial application and base metal.",
+        title: "Electrode Manufacturing",
+        desc:  "Full range of SMAW electrodes — E6013, E7018, E6010, E7010, stainless steel (309L, 316L), and cast iron grades for every industrial application.",
     },
     {
         num:   "02",
-        title: "MIG & TIG Wires",
-        desc:  "Precision-drawn solid and flux-cored wires engineered for consistent feedability, superior arc stability, and top-tier mechanical properties.",
+        title: "MIG Wire Supply",
+        desc:  "High-performance MIG wire (0.80mm – 1.20mm) delivering excellent bead appearance, arc stability, and feedability for semi-automatic welding.",
     },
     {
         num:   "03",
-        title: "Metallurgical Consulting",
-        desc:  "Our engineers provide expert guidance on product selection, procedure qualification, and on-site weld optimisation.",
+        title: "Welding Consulting",
+        desc:  "Our team recommends the right electrode for your specific application — structural steel, pipelines, food-grade stainless, or general fabrication.",
     },
     {
         num:   "04",
-        title: "Custom Formulations",
-        desc:  "Bespoke electrode chemistries for demanding specifications — offshore, subsea, nuclear-grade, and high-alloy applications.",
+        title: "Technical Support",
+        desc:  "Dedicated local support team in Gaborone providing fast, knowledgeable welding advice and assistance for every project.",
     },
 ];
 
@@ -93,30 +93,33 @@ export default function Home() {
                     <div className="hero-overlay" />
                 </div>
 
-                {/* Content — bottom-anchored */}
-                <div className="hero-body wrap">
-                    <h1 className="hero-title">
-                        Engineered for the<br />
-                        World&rsquo;s Most<br />
-                        Demanding Environments.
-                    </h1>
-                    <p className="hero-sub">
-                        Premium welding consumables built to AWS, ISO, and DIN standards —
-                        so every weld you make is one you can stake your reputation on.
-                    </p>
-                    <div className="hero-actions">
-                        <Link href="/products" className="btn btn-primary">
-                            View Catalog
-                        </Link>
-                        <Link href="/contact" className="btn btn-ghost">
-                            Request a Quote
-                        </Link>
+                {/* Content — two-column, pinned to bottom */}
+                <div className="hero-body wrap-xl">
+                    <div className="hero-left">
+                        <h1 className="hero-title">
+                            Finest Quality<br />
+                            Electrode.
+                        </h1>
+                    </div>
+                    <div className="hero-right">
+                        <p className="hero-sub">
+                            Welding solutions you can rely on — manufactured in Botswana,
+                            built for structural steel, pipelines, and every demanding application.
+                        </p>
+                        <div className="hero-actions">
+                            <Link href="/products" className="btn btn-primary">
+                                View Catalog
+                            </Link>
+                            <Link href="/contact" className="btn btn-ghost">
+                                Request a Quote
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
                 {/* Stats strip — bottom of hero */}
                 <div className="hero-stats" aria-label="Company highlights">
-                    <div className="wrap hero-stats-grid">
+                    <div className="wrap-xl hero-stats-grid">
                         {heroStats.map((s) => (
                             <div className="hero-stat" key={s.label}>
                                 <span className="hero-stat-num">{s.number}</span>
@@ -129,14 +132,15 @@ export default function Home() {
 
             {/* ══ 2 · MISSION STATEMENT ══════════════════════════════════════════ */}
             <section className="mission-strip" aria-label="Our mission">
-                <div className="wrap">
+                <div className="wrap-xl">
                     <p className="mission-text">
-                        &ldquo;The materials we supply hold bridges together, keep pipelines
-                        intact, and ensure that the structures built today still stand
-                        decades from now.&rdquo;
+                        &ldquo;ElectroMaster delivers welding solutions you can rely on.
+                        Based in Botswana, we combine practical expertise with a commitment
+                        to consistent performance — ensuring each weld meets the standards
+                        clients deserve.&rdquo;
                     </p>
                     <div className="mission-meta">
-                        <span className="label label--muted">Founded on a singular mission</span>
+                        <span className="label label--muted">Gaborone, Botswana</span>
                         <Link href="/about" className="mission-link">
                             Our story <span aria-hidden="true">→</span>
                         </Link>
@@ -161,7 +165,7 @@ export default function Home() {
 
             {/* ══ 4 · FEATURED PRODUCTS ══════════════════════════════════════════ */}
             <section className="featured" aria-label="Featured products">
-                <div className="wrap">
+                <div className="wrap-xl">
                     <div className="section-header">
                         <p className="label">Our Catalog</p>
                         <h2 className="section-title" style={{ marginTop: "12px" }}>
@@ -169,7 +173,6 @@ export default function Home() {
                         </h2>
                     </div>
 
-                    {/* Editorial asymmetric grid */}
                     <div className="featured-grid">
                         {products.map((p) => (
                             <article
@@ -207,15 +210,14 @@ export default function Home() {
             </section>
 
             {/* ══ 5 · ABOUT TEASER ═══════════════════════════════════════════════ */}
-            <section className="about-teaser" aria-label="About Electro Master">
-                <div className="about-teaser-grid wrap">
+            <section className="about-teaser" aria-label="About ElectroMaster">
+                <div className="about-teaser-grid wrap-xl">
 
                     <div className="at-image-wrap">
                         <div className="img-ph" aria-hidden="true" />
-                        {/* Floating stat badge */}
                         <div className="at-badge" aria-hidden="true">
-                            <span className="at-badge-num">500<sup>+</sup></span>
-                            <span className="at-badge-lbl">Clients Served</span>
+                            <span className="at-badge-num">15<sup>+</sup></span>
+                            <span className="at-badge-lbl">Resellers & Growing</span>
                         </div>
                     </div>
 
@@ -225,20 +227,19 @@ export default function Home() {
                             Who We Are
                         </h2>
                         <p className="at-pull">
-                            We are not merely a supplier — we are partners embedded in your
-                            production line.
+                            We deliver welding solutions you can rely on — right here in Botswana.
                         </p>
                         <p className="at-body">
-                            Electro Master was founded with a singular vision: to bridge the gap
-                            between precision manufacturing and the real demands of on-site
-                            industrial work. In construction, shipbuilding, and pipeline
-                            fabrication, the quality of the weld determines the integrity of the
-                            whole structure.
+                            ElectroMaster is a Botswana-based manufacturer focused on producing
+                            durable, high-quality electrodes that keep projects moving forward.
+                            Our team combines practical expertise with a commitment to consistent
+                            performance, ensuring each weld meets the standards our clients deserve.
                         </p>
                         <p className="at-body">
-                            Our team of industry veterans brings deep expertise in metallurgy and
-                            arc physics, ensuring every product we ship performs flawlessly under
-                            pressure, in any environment, every time.
+                            Our products are suitable for structural steel, pipelines, general
+                            fabrication, and other industrial welding applications — backed by
+                            a dedicated local support team ready to advise on the right electrode
+                            for your specific needs.
                         </p>
                         <Link href="/about" className="btn btn-navy" style={{ marginTop: "2.5rem" }}>
                             Learn More About Us
@@ -250,15 +251,15 @@ export default function Home() {
 
             {/* ══ 6 · CAPABILITIES ═══════════════════════════════════════════════ */}
             <section className="capabilities" aria-label="Our capabilities">
-                <div className="wrap">
+                <div className="wrap-xl">
                     <div className="section-header section-header--center">
                         <p className="label">What We Offer</p>
                         <h2 className="section-title" style={{ marginTop: "12px" }}>
                             Our Capabilities
                         </h2>
                         <p className="section-body" style={{ marginTop: "16px" }}>
-                            From standard consumables to bespoke engineered solutions, we provide
-                            everything your operation demands — backed by deep technical expertise.
+                            From standard electrodes to expert consulting, we provide everything
+                            your welding operation needs — backed by a local Botswana team.
                         </p>
                     </div>
 
@@ -276,16 +277,16 @@ export default function Home() {
 
             {/* ══ 7 · CTA BANNER ═════════════════════════════════════════════════ */}
             <section className="cta-banner" aria-label="Contact call to action">
-                <div className="wrap">
+                <div className="wrap-xl">
                     <div className="cta-inner">
                         <div className="cta-text">
                             <h2 className="cta-heading">
-                                Ready to Elevate<br />
-                                Your Operation?
+                                Ready to Source<br />
+                                Quality Electrodes?
                             </h2>
                             <p className="cta-sub">
-                                Our sales engineers are standing by. Tell us about your project
-                                and receive a tailored quote within 24 hours.
+                                Our team is ready to recommend the right product for your
+                                application and get you a quote fast.
                             </p>
                         </div>
                         <div className="cta-actions">
