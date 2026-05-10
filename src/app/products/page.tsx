@@ -79,10 +79,14 @@ const ProductsPage = () => {
     return (
         <div className="products-page">
             <div className="products-header">
-                <div className="header-content">
-                    <h1 className="products-title">PRODUCT CATALOG</h1>
+                <div className="container-width">
+                    <span className="label" style={{ color: "rgba(255,255,255,0.4)", marginBottom: "16px", display: "block" }}>
+                        What We Supply
+                    </span>
+                    <h1 className="products-title">Product Catalog</h1>
                     <p className="products-subtitle">
-                        Engineered for precision. Built for industry.
+                        Premium welding consumables engineered for precision and built for industry.
+                        Request a quote on any product directly from our team.
                     </p>
                 </div>
             </div>
