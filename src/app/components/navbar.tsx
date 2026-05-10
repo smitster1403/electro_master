@@ -20,7 +20,6 @@ const NavBar = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    /* Close on route change */
     useEffect(() => { setMenuOpen(false); }, [pathname]);
 
     return (
@@ -28,51 +27,24 @@ const NavBar = () => {
             className={`site-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
             role="banner"
         >
-            <nav
-                className="nav-inner wrap"
-                aria-label="Main navigation"
-            >
-                {/* ── Brand ───────────────────────────────────────── */}
-                <Link href="/" className="nav-brand" aria-label="ElectroMaster — home">
-                    <Image
-                        src="/logo.png"
-                        alt=""
-                        width={34}
-                        height={34}
-                        className="nav-logo-img"
-                        priority
-                    />
-                    <span className="nav-brand-name">
-                        Electro<em>Master</em>
-                    </span>
-                </Link>
+            <nav className="nav-inner wrap" aria-label="Main navigation">
 
-                {/* ── Desktop links ────────────────────────────────── */}
-                <ul className="nav-links" role="list" aria-label="Site pages">
-                    <li>
-                        <Link href="/" className={`nav-link ${isActive("/")}`}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/products" className={`nav-link ${isActive("/products")}`}>
-                            Products
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/about" className={`nav-link ${isActive("/about")}`}>
-                            About
-                        </Link>
-                    </li>
-                </ul>
-
-                {/* ── Right side ───────────────────────────────────── */}
-                <div className="nav-right">
-                    <Link href="/contact" className="btn btn-primary nav-cta">
-                        Contact Sales
+                {/* ── Row 1: Logo centred, burger at right (mobile only) ── */}
+                <div className="nav-top">
+                    <Link href="/" className="nav-brand" aria-label="ElectroMaster — home">
+                        <Image
+                            src="/logo.png"
+                            alt=""
+                            width={32}
+                            height={32}
+                            className="nav-logo-img"
+                            priority
+                        />
+                        <span className="nav-brand-name">
+                            Electro<em>Master</em>
+                        </span>
                     </Link>
 
-                    {/* Hamburger */}
                     <button
                         className={`nav-burger ${menuOpen ? "open" : ""}`}
                         onClick={() => setMenuOpen(v => !v)}
@@ -83,9 +55,34 @@ const NavBar = () => {
                         <span /><span /><span />
                     </button>
                 </div>
+
+                {/* ── Row 2: Links + CTA, evenly spaced (desktop only) ── */}
+                <div className="nav-row">
+                    <ul className="nav-links" role="list" aria-label="Site pages">
+                        <li>
+                            <Link href="/" className={`nav-link ${isActive("/")}`}>
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/products" className={`nav-link ${isActive("/products")}`}>
+                                Products
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about" className={`nav-link ${isActive("/about")}`}>
+                                About
+                            </Link>
+                        </li>
+                    </ul>
+                    <Link href="/contact" className="btn btn-primary nav-cta">
+                        Contact Sales
+                    </Link>
+                </div>
+
             </nav>
 
-            {/* ── Mobile drawer ────────────────────────────────────── */}
+            {/* ── Mobile drawer ── */}
             <div
                 id="mobile-menu"
                 className={`mobile-drawer ${menuOpen ? "open" : ""}`}
@@ -99,10 +96,7 @@ const NavBar = () => {
                         { href: "/contact", label: "Contact Sales" },
                     ].map(({ href, label }) => (
                         <li key={href}>
-                            <Link
-                                href={href}
-                                className={`drawer-link ${isActive(href)}`}
-                            >
+                            <Link href={href} className={`drawer-link ${isActive(href)}`}>
                                 {label}
                             </Link>
                         </li>

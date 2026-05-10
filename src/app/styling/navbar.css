@@ -1,5 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
-   NAVBAR — Transparent over hero, solid white on scroll
+   NAVBAR — Two-row: logo centred on top, links evenly spaced below
+   Transparent over hero → solid white on scroll
 ══════════════════════════════════════════════════════════════ */
 
 .site-header {
@@ -8,43 +9,44 @@
     inset-inline: 0;
     z-index: 900;
     background: transparent;
-    transition:
-        background-color 0.35s var(--ease),
-        backdrop-filter   0.35s var(--ease),
-        box-shadow        0.35s var(--ease);
+    transition: background-color 0.35s var(--ease);
 }
 
-/* Solid white once user scrolls */
 .site-header.is-scrolled {
-    background: var(--white);
-    box-shadow: var(--shadow-sm);
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-/* ── Nav inner row ─────────────────────────────────────────── */
+/* ── Two-row inner container ─────────────────────────────── */
 .nav-inner {
-    height: var(--nav-h);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    flex-direction: column;
+    padding: 12px 0 9px;
+    gap: 2px;
 }
 
-/* ── Brand / Wordmark ──────────────────────────────────────── */
+/* ── Row 1: Logo centred ─────────────────────────────────── */
+.nav-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* anchor for burger absolute positioning */
+    min-height: 36px;
+}
+
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     text-decoration: none;
-    flex-shrink: 0;
 }
 
-.nav-logo-img {
-    border-radius: 4px;
-}
+.nav-logo-img { border-radius: 4px; }
 
 .nav-brand-name {
     font-family: var(--font-syne), 'Syne', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: -0.01em;
     color: var(--white);
@@ -53,40 +55,46 @@
     transition: color 0.35s var(--ease);
 }
 
-/* "Master" in blue */
 .nav-brand-name em {
     color: var(--blue-mid);
     font-style: normal;
 }
 
-/* When scrolled — brand text goes dark */
-.is-scrolled .nav-brand-name {
-    color: var(--ink);
-}
+.is-scrolled .nav-brand-name      { color: var(--ink); }
+.is-scrolled .nav-brand-name em   { color: var(--blue); }
 
-.is-scrolled .nav-brand-name em {
-    color: var(--blue);
-}
-
-/* ── Desktop links ─────────────────────────────────────────── */
-.nav-links {
+/* ── Row 2: Links + CTA, evenly spaced ──────────────────── */
+.nav-row {
     display: flex;
-    list-style: none;
-    gap: 4px;
     align-items: center;
-    margin-inline: auto;
+    justify-content: space-evenly;
+    width: 100%;
 }
+
+/*
+ * display:contents removes the <ul> box — its <li> children
+ * become direct flex children of .nav-row, enabling true
+ * 4-item space-evenly distribution with the CTA button.
+ */
+.nav-links {
+    display: contents;
+    list-style: none;
+}
+
+/* li items now participate directly in .nav-row flex layout */
+.nav-links li { display: flex; align-items: center; }
 
 .nav-link {
     font-family: var(--font-inter), sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.82);
     text-decoration: none;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 4px;
     transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -102,49 +110,33 @@
 .nav-link.active::after {
     content: '';
     position: absolute;
-    inset-block-end: -3px;
-    inset-inline: 14px;
+    inset-block-end: -2px;
+    inset-inline: 12px;
     height: 2px;
     background: var(--white);
     border-radius: 1px;
 }
 
-/* When scrolled — links go dark */
-.is-scrolled .nav-link {
-    color: var(--text-mid);
-}
-
-.is-scrolled .nav-link:hover {
-    color: var(--ink);
-    background: var(--surface);
-}
-
-.is-scrolled .nav-link.active {
-    color: var(--blue);
-    background: var(--blue-light);
-}
-
-.is-scrolled .nav-link.active::after {
-    background: var(--blue);
-}
-
-/* ── Right cluster ─────────────────────────────────────────── */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-}
+/* Scrolled state — links go dark */
+.is-scrolled .nav-link              { color: var(--text-mid); }
+.is-scrolled .nav-link:hover        { color: var(--ink); background: var(--surface); }
+.is-scrolled .nav-link.active       { color: var(--blue); background: var(--blue-light); }
+.is-scrolled .nav-link.active::after { background: var(--blue); }
 
 /* CTA button */
 .nav-cta {
-    padding: 10px 22px;
-    font-size: 0.8rem;
+    padding: 8px 20px;
+    font-size: 0.78rem;
+    white-space: nowrap;
 }
 
-/* ── Hamburger ─────────────────────────────────────────────── */
+/* ── Hamburger (mobile only, absolute in nav-top) ────────── */
 .nav-burger {
     display: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     flex-direction: column;
     gap: 5px;
     background: none;
@@ -156,7 +148,6 @@
 }
 
 .nav-burger:hover { background: rgba(255,255,255,0.1); }
-
 .is-scrolled .nav-burger:hover { background: var(--surface); }
 
 .nav-burger span {
@@ -175,21 +166,17 @@
 .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Mobile drawer ─────────────────────────────────────────── */
+/* ── Mobile drawer ───────────────────────────────────────── */
 .mobile-drawer {
     background: var(--ink-soft);
-    border-top: 1px solid rgba(255,255,255,0.07);
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.38s var(--ease);
 }
 
-.is-scrolled .mobile-drawer {
-    background: var(--white);
-    border-top: 1px solid var(--border);
-}
+.is-scrolled .mobile-drawer { background: var(--white); }
 
-.mobile-drawer.open { max-height: 440px; }
+.mobile-drawer.open { max-height: 460px; }
 
 .mobile-drawer ul { list-style: none; padding: 8px 0; }
 
@@ -236,19 +223,12 @@
     color: var(--text-muted);
 }
 
-.drawer-contact a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.2s;
-}
-
+.drawer-contact a { text-decoration: none; color: inherit; transition: color 0.2s; }
 .drawer-contact a:hover { color: rgba(255,255,255,0.75); }
-
 .is-scrolled .drawer-contact a:hover { color: var(--blue); }
 
-/* ── Responsive ────────────────────────────────────────────── */
+/* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .nav-links  { display: none; }
-    .nav-cta    { display: none; }
-    .nav-burger { display: flex; }
+    .nav-row    { display: none; }   /* hide desktop links + CTA */
+    .nav-burger { display: flex; }   /* show hamburger in nav-top */
 }

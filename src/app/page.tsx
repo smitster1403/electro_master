@@ -95,7 +95,6 @@ export default function Home() {
 
                 {/* Content — bottom-anchored */}
                 <div className="hero-body wrap">
-                    <p className="label hero-label">Certified Industrial Solutions</p>
                     <h1 className="hero-title">
                         Engineered for the<br />
                         World&rsquo;s Most<br />

@@ -10,7 +10,7 @@
 /* ── Hero banner ──────────────────────────────────────────── */
 .about-hero {
     background: linear-gradient(135deg, #0c3a8f 0%, #1253c4 40%, #1f6dea 100%);
-    padding: 96px 0 88px;
+    padding: calc(var(--nav-h) + 32px) 0 88px;
 }
 
 .about-hero-overline {
